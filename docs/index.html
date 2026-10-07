@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RADIC: Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information.">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>RADIC — Retrieval-Augmented Distributed Image Compression</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top"><span class="brand-mark">R</span>RADIC</a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a><a href="#results">Results</a><a href="#citation">Citation</a>
+      </div>
+    </nav>
+    <main id="top" class="hero-content wrap">
+      <p class="eyebrow">Distributed image compression · Decoder-side visual memory</p>
+      <h1>Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information</h1>
+      <p class="authors">Guojun Xu · Jianwen Xiang · Mingyang Zhang · Yaning Xie · Junwei Zhou</p>
+      <p class="affiliation">School of Artificial Intelligence, Wuhan University of Technology</p>
+      <div class="actions">
+        <a class="button primary" href="assets/RADIC.pdf">Paper</a>
+        <a class="button" href="https://github.com/Mommqq/RADIC">Code</a>
+        <a class="button" href="#citation">BibTeX</a>
+      </div>
+      <figure class="hero-figure panel">
+        <img src="assets/setting.png" alt="Comparison between paired side information and RADIC retrieval from a decoder-side gallery">
+      </figure>
+      <div class="claim-grid" aria-label="RADIC highlights">
+        <article><strong>Decoder-only retrieval</strong><span>References are selected from a visual gallery using the transmitted latent.</span></article>
+        <article><strong>Geometry-aware fusion</strong><span>Depth-guided alignment and cross-attention handle mismatched references.</span></article>
+        <article><strong>Cross-domain evaluation</strong><span>One KITTI General training domain and four evaluation datasets.</span></article>
+      </div>
+    </main>
+  </header>
+
+  <section class="section wrap" id="abstract">
+    <div class="section-heading"><span>01</span><h2>Abstract</h2></div>
+    <p class="abstract">Extremely low-bitrate distributed image compression is particularly sensitive to the relevance and geometric consistency of side information. RADIC replaces fixed paired side information with multiple references retrieved from a decoder-side visual gallery. A depth-aware geometric alignment module aligns retrieved features through depth-guided coarse flow and residual refinement, while multi-reference cross-attention selectively aggregates complementary information. Decoder attention also supervises an encoder-side importance map for side-information-aware rate allocation. Trained exclusively on KITTI General, RADIC is evaluated on KITTI General, KITTI Stereo, Cityscapes, and InStereo2K under paired, non-paired, and cross-domain retrieval.</p>
+  </section>
+
+  <section class="section tint" id="overview">
+    <div class="wrap">
+      <div class="section-heading"><span>02</span><h2>Overview</h2></div>
+      <figure class="wide-figure panel"><img src="assets/framework.png" alt="RADIC framework overview"></figure>
+      <div class="module-grid">
+        <article><span class="module-index">A</span><h3>Retrieve</h3><p>The decoded target latent queries a fixed decoder-side gallery for top-K candidate references.</p></article>
+        <article><span class="module-index">B</span><h3>Align</h3><p>DAGA combines depth-guided coarse correspondence with residual flow refinement.</p></article>
+        <article><span class="module-index">C</span><h3>Aggregate</h3><p>MCA weighs complementary regions across multiple references and suppresses irrelevant content.</p></article>
+        <article><span class="module-index">D</span><h3>Reconstruct</h3><p>A two-step diffusion decoder produces the final reconstruction at extremely low bitrates.</p></article>
+      </div>
+      <figure class="wide-figure panel compact"><img src="assets/daga.png" alt="Depth-aware geometric alignment module"></figure>
+    </div>
+  </section>
+
+  <section class="section wrap" id="robustness">
+    <div class="section-heading"><span>03</span><h2>Side-information robustness</h2></div>
+    <p class="lead">Use the controls to inspect the same target under progressively weaker side information. Images and metrics are drawn from the manuscript assets.</p>
+    <div class="tabs" role="tablist" aria-label="Side information condition">
+      <button class="tab active" data-condition="paired" role="tab">Paired</button>
+      <button class="tab" data-condition="non_paired" role="tab">Non-paired</button>
+      <button class="tab" data-condition="cross_domain" role="tab">Cross-domain</button>
+    </div>
+    <div class="robustness-grid">
+      <figure class="image-card"><figcaption>Target</figcaption><img id="target-image" src="assets/target.png" alt="Target image"></figure>
+      <figure class="image-card"><figcaption id="si-label">Paired SI</figcaption><img id="si-image" src="assets/si_paired.png" alt="Side information image"></figure>
+      <figure class="image-card"><figcaption>NDSC <span id="ndsc-metric"></span></figcaption><img id="ndsc-image" src="assets/ndsc_paired.png" alt="NDSC reconstruction"></figure>
+      <figure class="image-card"><figcaption>MDIC <span id="mdic-metric"></span></figcaption><img id="mdic-image" src="assets/mdic_paired.png" alt="MDIC reconstruction"></figure>
+      <figure class="image-card featured"><figcaption>RADIC <span id="radic-metric"></span></figcaption><img id="radic-image" src="assets/radic_paired.png" alt="RADIC reconstruction"></figure>
+    </div>
+  </section>
+
+  <section class="section tint" id="results">
+    <div class="wrap">
+      <div class="section-heading"><span>04</span><h2>Results</h2></div>
+      <div class="result-block">
+        <div><p class="kicker">Perceptual quality</p><h3>Rate–perception performance</h3><p>RADIC is evaluated with LPIPS, FID, DISTS, KID, and NIQE across four datasets. Lower values indicate better perceptual reconstruction.</p></div>
+        <figure class="panel"><img src="assets/rate_perception.svg" alt="Rate-perception curves across four datasets"></figure>
+      </div>
+      <div class="result-block reverse">
+        <div><p class="kicker">Pixel fidelity</p><h3>Rate–distortion performance</h3><p>PSNR and MS-SSIM complement perceptual metrics and expose the distortion–perception behavior at low bitrates.</p></div>
+        <figure class="panel"><img src="assets/rate_distortion.svg" alt="Rate-distortion curves across four datasets"></figure>
+      </div>
+
+      <h3 class="subheading">Qualitative comparison</h3>
+      <div class="qual-grid">
+        <figure><img src="assets/qual_gt.png" alt="Ground truth"><figcaption>Ground truth</figcaption></figure>
+        <figure><img src="assets/qual_camsic.png" alt="CAMSIC reconstruction"><figcaption>CAMSIC<br><span>0.0518 bpp · LPIPS 0.4201</span></figcaption></figure>
+        <figure><img src="assets/qual_ndsc.png" alt="NDSC reconstruction"><figcaption>NDSC<br><span>0.0625 bpp · LPIPS 0.3414</span></figcaption></figure>
+        <figure><img src="assets/qual_mdic.png" alt="MDIC reconstruction"><figcaption>MDIC<br><span>0.0539 bpp · LPIPS 0.2386</span></figcaption></figure>
+        <figure><img src="assets/qual_resulic.png" alt="ResULIC reconstruction"><figcaption>ResULIC<br><span>0.0611 bpp · LPIPS 0.2591</span></figcaption></figure>
+        <figure class="featured"><img src="assets/qual_radic.png" alt="RADIC reconstruction"><figcaption>RADIC<br><span>0.0484 bpp · LPIPS 0.1979</span></figcaption></figure>
+      </div>
+
+      <h3 class="subheading">How many references?</h3>
+      <p class="lead narrow">The first relevant reference provides most of the gain. Additional references help only when they contribute nonredundant target information.</p>
+      <figure class="wide-figure panel"><img src="assets/nref.svg" alt="Rate saving versus number of side-information references"></figure>
+    </div>
+  </section>
+
+  <section class="section wrap" id="citation">
+    <div class="section-heading"><span>05</span><h2>Citation</h2></div>
+    <div class="citation-box">
+      <pre id="bibtex">@article{xu2026radic,
+  title   = {Retrieval-Augmented Distributed Image Compression
+             with Multi-Reference Side Information},
+  author  = {Xu, Guojun and Xiang, Jianwen and Zhang, Mingyang
+             and Xie, Yaning and Zhou, Junwei},
+  year    = {2026},
+  note    = {Manuscript}
+}</pre>
+      <button id="copy-bib" class="copy-button">Copy BibTeX</button>
+    </div>
+  </section>
+
+  <footer><div class="wrap"><strong>RADIC</strong><span>Wuhan University of Technology · 2026</span></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
