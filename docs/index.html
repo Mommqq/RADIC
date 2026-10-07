@@ -26,7 +26,7 @@
         <a class="button" href="https://github.com/Mommqq/RADIC">Code</a>
         <a class="button" href="#citation">BibTeX</a>
       </div>
-      <figure class="hero-figure panel">
+      <figure class="hero-figure panel trim-figure">
         <img src="assets/setting.png" alt="Comparison between paired side information and RADIC retrieval from a decoder-side gallery">
       </figure>
       <div class="claim-grid" aria-label="RADIC highlights">
@@ -39,20 +39,20 @@
 
   <section class="section wrap" id="abstract">
     <div class="section-heading"><span>01</span><h2>Abstract</h2></div>
-    <p class="abstract">Extremely low-bitrate distributed image compression is particularly sensitive to the relevance and geometric consistency of side information. RADIC replaces fixed paired side information with multiple references retrieved from a decoder-side visual gallery. A depth-aware geometric alignment module aligns retrieved features through depth-guided coarse flow and residual refinement, while multi-reference cross-attention selectively aggregates complementary information. Decoder attention also supervises an encoder-side importance map for side-information-aware rate allocation. Trained exclusively on KITTI General, RADIC is evaluated on KITTI General, KITTI Stereo, Cityscapes, and InStereo2K under paired, non-paired, and cross-domain retrieval.</p>
+    <p class="abstract">Extremely low-bitrate distributed image compression (DIC) is crucial for bandwidth-constrained visual sensing and distributed cloud storage. At such low bitrates (&lt;0.1 bpp), the transmitted representation retains little target information, making reconstruction particularly sensitive to the relevance and geometric consistency of the available side information (SI). Existing learning-based DIC methods are commonly developed with a pre-associated SI under matched training and evaluation distributions, whereas practical decoder-side visual collections may contain references with varying correlations to the target. To address these limitations, we propose RADIC, a retrieval-augmented DIC framework that replaces fixed paired SI with multiple references retrieved from a decoder-side visual gallery. Specifically, we construct a heterogeneous SI gallery and retrieve correlated references using the transmitted latent representation. To handle the geometric mismatch and varying relevance of retrieved references, we design a depth-aware geometric alignment module to align retrieved features through depth-guided coarse flow and residual refinement. A multi-reference cross-attention mechanism then selectively aggregates complementary information while suppressing irrelevant content. Moreover, decoder attention supervises an encoder-side importance map for SI-aware rate allocation. Trained exclusively on KITTI General, RADIC achieves superior perceptual compression performance across KITTI General, KITTI Stereo, Cityscapes, and InStereo2K, and remains robust under weakly correlated and cross-domain SI.</p>
   </section>
 
   <section class="section tint" id="overview">
     <div class="wrap">
       <div class="section-heading"><span>02</span><h2>Overview</h2></div>
-      <figure class="wide-figure panel"><img src="assets/framework.png" alt="RADIC framework overview"></figure>
+      <figure class="wide-figure panel trim-figure"><img src="assets/framework.png" alt="RADIC framework overview"></figure>
       <div class="module-grid">
         <article><span class="module-index">A</span><h3>Retrieve</h3><p>The decoded target latent queries a fixed decoder-side gallery for top-K candidate references.</p></article>
         <article><span class="module-index">B</span><h3>Align</h3><p>DAGA combines depth-guided coarse correspondence with residual flow refinement.</p></article>
         <article><span class="module-index">C</span><h3>Aggregate</h3><p>MCA weighs complementary regions across multiple references and suppresses irrelevant content.</p></article>
         <article><span class="module-index">D</span><h3>Reconstruct</h3><p>A two-step diffusion decoder produces the final reconstruction at extremely low bitrates.</p></article>
       </div>
-      <figure class="wide-figure panel compact"><img src="assets/daga.png" alt="Depth-aware geometric alignment module"></figure>
+      <figure class="wide-figure panel compact trim-figure"><img src="assets/daga.png" alt="Depth-aware geometric alignment module"></figure>
     </div>
   </section>
 
@@ -73,16 +73,39 @@
     </div>
   </section>
 
+  <section class="section comparison-section" id="comparison">
+    <div class="wrap">
+      <div class="section-heading"><span>04</span><h2>Visual comparison</h2></div>
+      <p class="lead">Drag the divider to compare RADIC against another reconstruction at a similar bitrate. Choose a baseline below the image.</p>
+      <div class="compare-shell panel">
+        <div class="compare-stage" id="compare-stage">
+          <img class="compare-image compare-right" src="assets/qual_radic.png" alt="RADIC reconstruction">
+          <div class="compare-left" id="compare-left"><img id="compare-baseline-image" class="compare-image" src="assets/qual_mdic.png" alt="MDIC reconstruction"></div>
+          <div class="compare-label left" id="compare-baseline-label">MDIC · 0.0539 bpp · LPIPS 0.2386</div>
+          <div class="compare-label right">RADIC · 0.0484 bpp · LPIPS 0.1979</div>
+          <div class="compare-divider" id="compare-divider" aria-hidden="true"><span>↔</span></div>
+          <input id="compare-range" class="compare-range" type="range" min="0" max="100" value="50" aria-label="Move comparison divider">
+        </div>
+        <div class="method-picker" role="group" aria-label="Baseline method">
+          <button class="method-button active" data-method="mdic">MDIC</button>
+          <button class="method-button" data-method="ndsc">NDSC</button>
+          <button class="method-button" data-method="resulic">ResULIC</button>
+          <button class="method-button" data-method="camsic">CAMSIC</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section tint" id="results">
     <div class="wrap">
-      <div class="section-heading"><span>04</span><h2>Results</h2></div>
+      <div class="section-heading"><span>05</span><h2>Results</h2></div>
       <div class="result-block">
-        <div><p class="kicker">Perceptual quality</p><h3>Rate–perception performance</h3><p>RADIC is evaluated with LPIPS, FID, DISTS, KID, and NIQE across four datasets. Lower values indicate better perceptual reconstruction.</p></div>
-        <figure class="panel"><img src="assets/rate_perception.svg" alt="Rate-perception curves across four datasets"></figure>
+        <div class="result-copy"><div><p class="kicker">Perceptual quality</p><h3>Rate–perception performance</h3></div><p>RADIC is evaluated with LPIPS, FID, DISTS, KID, and NIQE across four datasets. Lower values indicate better perceptual reconstruction.</p></div>
+        <figure class="panel result-figure"><img src="assets/rate_perception.svg" alt="Rate-perception curves across four datasets"></figure>
       </div>
-      <div class="result-block reverse">
-        <div><p class="kicker">Pixel fidelity</p><h3>Rate–distortion performance</h3><p>PSNR and MS-SSIM complement perceptual metrics and expose the distortion–perception behavior at low bitrates.</p></div>
-        <figure class="panel"><img src="assets/rate_distortion.svg" alt="Rate-distortion curves across four datasets"></figure>
+      <div class="result-block">
+        <div class="result-copy"><div><p class="kicker">Pixel fidelity</p><h3>Rate–distortion performance</h3></div><p>PSNR and MS-SSIM complement perceptual metrics and expose the distortion–perception behavior at low bitrates.</p></div>
+        <figure class="panel result-figure"><img src="assets/rate_distortion.svg" alt="Rate-distortion curves across four datasets"></figure>
       </div>
 
       <h3 class="subheading">Qualitative comparison</h3>
@@ -97,12 +120,12 @@
 
       <h3 class="subheading">How many references?</h3>
       <p class="lead narrow">The first relevant reference provides most of the gain. Additional references help only when they contribute nonredundant target information.</p>
-      <figure class="wide-figure panel"><img src="assets/nref.svg" alt="Rate saving versus number of side-information references"></figure>
+      <figure class="wide-figure panel result-figure"><img src="assets/nref.svg" alt="Rate saving versus number of side-information references"></figure>
     </div>
   </section>
 
   <section class="section wrap" id="citation">
-    <div class="section-heading"><span>05</span><h2>Citation</h2></div>
+    <div class="section-heading"><span>06</span><h2>Citation</h2></div>
     <div class="citation-box">
       <pre id="bibtex">@article{xu2026radic,
   title   = {Retrieval-Augmented Distributed Image Compression

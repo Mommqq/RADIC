@@ -24,6 +24,31 @@ document.querySelectorAll(".tab").forEach((button) => {
 
 renderCondition("paired");
 
+const comparisons = {
+  mdic: { image: "assets/qual_mdic.png", label: "MDIC · 0.0539 bpp · LPIPS 0.2386" },
+  ndsc: { image: "assets/qual_ndsc.png", label: "NDSC · 0.0625 bpp · LPIPS 0.3414" },
+  resulic: { image: "assets/qual_resulic.png", label: "ResULIC · 0.0611 bpp · LPIPS 0.2591" },
+  camsic: { image: "assets/qual_camsic.png", label: "CAMSIC · 0.0518 bpp · LPIPS 0.4201" }
+};
+
+function setDivider(value) {
+  document.querySelector("#compare-stage").style.setProperty("--position", `${value}%`);
+}
+
+document.querySelector("#compare-range").addEventListener("input", (event) => setDivider(event.target.value));
+document.querySelectorAll(".method-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".method-button").forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    const comparison = comparisons[button.dataset.method];
+    document.querySelector("#compare-baseline-image").src = comparison.image;
+    document.querySelector("#compare-baseline-image").alt = `${button.textContent} reconstruction`;
+    document.querySelector("#compare-baseline-label").textContent = comparison.label;
+  });
+});
+
+setDivider(50);
+
 document.querySelector("#copy-bib").addEventListener("click", async (event) => {
   await navigator.clipboard.writeText(document.querySelector("#bibtex").innerText);
   event.currentTarget.textContent = "Copied";
