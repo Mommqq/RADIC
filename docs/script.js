@@ -25,10 +25,10 @@ document.querySelectorAll(".tab").forEach((button) => {
 renderCondition("paired");
 
 const comparisons = {
-  mdic: { image: "assets/qual_mdic.png", label: "MDIC · 0.0539 bpp · LPIPS 0.2386" },
-  ndsc: { image: "assets/qual_ndsc.png", label: "NDSC · 0.0625 bpp · LPIPS 0.3414" },
-  resulic: { image: "assets/qual_resulic.png", label: "ResULIC · 0.0611 bpp · LPIPS 0.2591" },
-  camsic: { image: "assets/qual_camsic.png", label: "CAMSIC · 0.0518 bpp · LPIPS 0.4201" }
+  mdic: { image: "assets/qual_mdic.png", label: "MDIC \u00b7 0.0491 bpp \u00b7 LPIPS 0.2435" },
+  ndsc: { image: "assets/qual_ndsc.png", label: "NDSC \u00b7 0.0625 bpp \u00b7 LPIPS 0.5194" },
+  resulic: { image: "assets/qual_resulic.png", label: "ResULIC \u00b7 0.0806 bpp \u00b7 LPIPS 0.2706" },
+  camsic: { image: "assets/qual_camsic.png", label: "CAMSIC \u00b7 0.0980 bpp \u00b7 LPIPS 0.5953" }
 };
 
 function setDivider(value) {

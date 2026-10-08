@@ -13,7 +13,7 @@
     <nav class="nav wrap" aria-label="Primary navigation">
       <a class="brand" href="#top"><span class="brand-mark">R</span>RADIC</a>
       <div class="nav-links">
-        <a href="#overview">Overview</a><a href="#results">Results</a><a href="#citation">Citation</a>
+        <a href="#overview">Overview</a><a href="#interpretability">Interpretability</a><a href="#results">Results</a><a href="#citation">Citation</a>
       </div>
     </nav>
     <main id="top" class="hero-content wrap">
@@ -76,13 +76,13 @@
   <section class="section comparison-section" id="comparison">
     <div class="wrap">
       <div class="section-heading"><span>04</span><h2>Visual comparison</h2></div>
-      <p class="lead">At comparable bitrates, RADIC preserves clearer object boundaries and more faithful local textures than the competing reconstructions.</p>
+      <p class="lead">In the second InStereo2K example, RADIC preserves the local object structure and planar surfaces more faithfully than the competing reconstructions at comparable bitrates.</p>
       <div class="compare-shell panel">
         <div class="compare-stage" id="compare-stage">
           <img class="compare-image compare-right" src="assets/qual_radic.png" alt="RADIC reconstruction">
           <div class="compare-left" id="compare-left"><img id="compare-baseline-image" class="compare-image" src="assets/qual_mdic.png" alt="MDIC reconstruction"></div>
-          <div class="compare-label left" id="compare-baseline-label">MDIC · 0.0539 bpp · LPIPS 0.2386</div>
-          <div class="compare-label right">RADIC · 0.0484 bpp · LPIPS 0.1979</div>
+          <div class="compare-label left" id="compare-baseline-label">MDIC &middot; 0.0491 bpp &middot; LPIPS 0.2435</div>
+          <div class="compare-label right">RADIC &middot; 0.0533 bpp &middot; LPIPS 0.1865</div>
           <div class="compare-divider" id="compare-divider" aria-hidden="true"><span>↔</span></div>
           <input id="compare-range" class="compare-range" type="range" min="0" max="100" value="50" aria-label="Move comparison divider">
         </div>
@@ -96,9 +96,26 @@
     </div>
   </section>
 
-  <section class="section tint" id="results">
+  <section class="section tint" id="interpretability">
     <div class="wrap">
-      <div class="section-heading"><span>05</span><h2>Results</h2></div>
+      <div class="section-heading"><span>05</span><h2>Geometric alignment</h2></div>
+      <p class="lead interpretability-lead">DAGA produces spatially varying sampling displacements and suppresses unreliable side-information regions before feature fusion.</p>
+      <figure class="wide-figure panel interpretability-figure">
+        <img src="assets/geometric_alignment_interpretability.svg" alt="Geometric alignment and SI-aware rate-allocation visualization across four datasets">
+        <figcaption><strong>Fig. 1. Visualization of geometric alignment and SI-aware rate allocation.</strong> Columns show the target, retrieved SI, depth prior, learned sampling displacement, alignment gate, and encoder-predicted latent retention response.</figcaption>
+      </figure>
+      <div class="analysis-grid">
+        <article><h3>Geometry-dependent alignment</h3><p>The learned displacement varies with scene depth and object layout rather than applying a uniform image shift.</p></article>
+        <article><h3>Reliability-aware gating</h3><p>The alignment gate is reduced around mismatched vehicles, boundaries, narrow gaps, and other regions that remain unreliable after warping.</p></article>
+        <article><h3>Complementary rate allocation</h3><p>Latent retention is stronger around detailed or weakly supported regions and lower over flat areas that can be recovered more reliably from SI.</p></article>
+      </div>
+      <p class="interpretability-summary">Across Cityscapes, InStereo2K, KITTI General, and KITTI Stereo, the gate and retention maps play complementary roles: the decoder selectively accepts aligned SI, while the encoder preserves more target information where SI support is weak or uncertain.</p>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="wrap">
+      <div class="section-heading"><span>06</span><h2>Results</h2></div>
       <div class="result-block">
         <div class="result-copy"><div><p class="kicker">Perceptual quality</p><h3>Rate–perception performance</h3></div><p>RADIC is evaluated with LPIPS, FID, DISTS, KID, and NIQE across four datasets. Lower values indicate better perceptual reconstruction.</p></div>
         <figure class="panel result-figure"><img src="assets/rate_perception.svg" alt="Rate-perception curves across four datasets"></figure>
@@ -111,11 +128,11 @@
       <h3 class="subheading">Qualitative comparison</h3>
       <div class="qual-grid">
         <figure><img src="assets/qual_gt.png" alt="Ground truth"><figcaption>Ground truth</figcaption></figure>
-        <figure><img src="assets/qual_camsic.png" alt="CAMSIC reconstruction"><figcaption>CAMSIC<br><span>0.0518 bpp · LPIPS 0.4201</span></figcaption></figure>
-        <figure><img src="assets/qual_ndsc.png" alt="NDSC reconstruction"><figcaption>NDSC<br><span>0.0625 bpp · LPIPS 0.3414</span></figcaption></figure>
-        <figure><img src="assets/qual_mdic.png" alt="MDIC reconstruction"><figcaption>MDIC<br><span>0.0539 bpp · LPIPS 0.2386</span></figcaption></figure>
-        <figure><img src="assets/qual_resulic.png" alt="ResULIC reconstruction"><figcaption>ResULIC<br><span>0.0611 bpp · LPIPS 0.2591</span></figcaption></figure>
-        <figure class="featured"><img src="assets/qual_radic.png" alt="RADIC reconstruction"><figcaption>RADIC<br><span>0.0484 bpp · LPIPS 0.1979</span></figcaption></figure>
+        <figure><img src="assets/qual_camsic.png" alt="CAMSIC reconstruction"><figcaption>CAMSIC<br><span>0.0980 bpp &middot; LPIPS 0.5953</span></figcaption></figure>
+        <figure><img src="assets/qual_ndsc.png" alt="NDSC reconstruction"><figcaption>NDSC<br><span>0.0625 bpp &middot; LPIPS 0.5194</span></figcaption></figure>
+        <figure><img src="assets/qual_mdic.png" alt="MDIC reconstruction"><figcaption>MDIC<br><span>0.0491 bpp &middot; LPIPS 0.2435</span></figcaption></figure>
+        <figure><img src="assets/qual_resulic.png" alt="ResULIC reconstruction"><figcaption>ResULIC<br><span>0.0806 bpp &middot; LPIPS 0.2706</span></figcaption></figure>
+        <figure class="featured"><img src="assets/qual_radic.png" alt="RADIC reconstruction"><figcaption>RADIC<br><span>0.0533 bpp &middot; LPIPS 0.1865</span></figcaption></figure>
       </div>
 
       <h3 class="subheading">How many references?</h3>
@@ -125,7 +142,7 @@
   </section>
 
   <section class="section wrap" id="citation">
-    <div class="section-heading"><span>06</span><h2>Citation</h2></div>
+    <div class="section-heading"><span>07</span><h2>Citation</h2></div>
     <div class="citation-box">
       <pre id="bibtex">@article{xu2026radic,
   title   = {Retrieval-Augmented Distributed Image Compression
