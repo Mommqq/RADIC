@@ -156,13 +156,67 @@
       </div>
 
       <h3 class="subheading">Qualitative comparison</h3>
-      <div class="qual-grid">
-        <figure><img src="assets/qual_gt.png" alt="Ground truth"><figcaption>Ground truth</figcaption></figure>
-        <figure><img src="assets/qual_camsic.png" alt="CAMSIC reconstruction"><figcaption>CAMSIC<br><span>0.0980 bpp &middot; LPIPS 0.5953</span></figcaption></figure>
-        <figure><img src="assets/qual_ndsc.png" alt="NDSC reconstruction"><figcaption>NDSC<br><span>0.0625 bpp &middot; LPIPS 0.5194</span></figcaption></figure>
-        <figure><img src="assets/qual_mdic.png" alt="MDIC reconstruction"><figcaption>MDIC<br><span>0.0491 bpp &middot; LPIPS 0.2435</span></figcaption></figure>
-        <figure><img src="assets/qual_resulic.png" alt="ResULIC reconstruction"><figcaption>ResULIC<br><span>0.0806 bpp &middot; LPIPS 0.2706</span></figcaption></figure>
-        <figure class="featured"><img src="assets/qual_radic.png" alt="RADIC reconstruction"><figcaption>RADIC<br><span>0.0533 bpp &middot; LPIPS 0.1865</span></figcaption></figure>
+      <p class="lead qualitative-lead">Five examples from KITTI General, KITTI Stereo, Cityscapes, and InStereo2K. Each caption reports Bpp, PSNR, and LPIPS.</p>
+      <div class="qualitative-list">
+        <section class="qual-case" aria-labelledby="qual-general3">
+          <h4 id="qual-general3">KITTI General <span>Sample 3</span></h4>
+          <div class="qual-grid">
+            <figure><img src="assets/qual_general3_gt.png" alt="Ground truth for KITTI General sample 3"><figcaption>Ground truth</figcaption></figure>
+            <figure><img src="assets/compare_general3_camsic.png" alt="CAMSIC reconstruction for KITTI General sample 3"><figcaption>CAMSIC<span>0.0518 bpp &middot; 23.49 dB<br>LPIPS 0.4201</span></figcaption></figure>
+            <figure><img src="assets/compare_general3_ndsc.png" alt="NDSC reconstruction for KITTI General sample 3"><figcaption>NDSC<span>0.0625 bpp &middot; 23.66 dB<br>LPIPS 0.3414</span></figcaption></figure>
+            <figure><img src="assets/compare_general3_mdic.png" alt="MDIC reconstruction for KITTI General sample 3"><figcaption>MDIC<span>0.0539 bpp &middot; 19.27 dB<br>LPIPS 0.2386</span></figcaption></figure>
+            <figure><img src="assets/compare_general3_resulic.png" alt="ResULIC reconstruction for KITTI General sample 3"><figcaption>ResULIC<span>0.0611 bpp &middot; 18.79 dB<br>LPIPS 0.2591</span></figcaption></figure>
+            <figure class="featured"><img src="assets/compare_general3_radic.png" alt="RADIC reconstruction for KITTI General sample 3"><figcaption>RADIC<span>0.0484 bpp &middot; 22.36 dB<br>LPIPS 0.1979</span></figcaption></figure>
+          </div>
+        </section>
+
+        <section class="qual-case" aria-labelledby="qual-stereo2">
+          <h4 id="qual-stereo2">KITTI Stereo <span>Sample 2</span></h4>
+          <div class="qual-grid">
+            <figure><img src="assets/qual_stereo2_gt.png" alt="Ground truth for KITTI Stereo sample 2"><figcaption>Ground truth</figcaption></figure>
+            <figure><img src="assets/qual_stereo2_camsic.png" alt="CAMSIC reconstruction for KITTI Stereo sample 2"><figcaption>CAMSIC<span>0.0499 bpp &middot; 25.48 dB<br>LPIPS 0.4345</span></figcaption></figure>
+            <figure><img src="assets/qual_stereo2_ndsc.png" alt="NDSC reconstruction for KITTI Stereo sample 2"><figcaption>NDSC<span>0.0625 bpp &middot; 25.89 dB<br>LPIPS 0.3947</span></figcaption></figure>
+            <figure><img src="assets/qual_stereo2_mdic.png" alt="MDIC reconstruction for KITTI Stereo sample 2"><figcaption>MDIC<span>0.0583 bpp &middot; 21.06 dB<br>LPIPS 0.2399</span></figcaption></figure>
+            <figure><img src="assets/qual_stereo2_resulic.png" alt="ResULIC reconstruction for KITTI Stereo sample 2"><figcaption>ResULIC<span>0.0726 bpp &middot; 21.88 dB<br>LPIPS 0.2342</span></figcaption></figure>
+            <figure class="featured"><img src="assets/qual_stereo2_radic.png" alt="RADIC reconstruction for KITTI Stereo sample 2"><figcaption>RADIC<span>0.0496 bpp &middot; 23.69 dB<br>LPIPS 0.1955</span></figcaption></figure>
+          </div>
+        </section>
+
+        <section class="qual-case" aria-labelledby="qual-city55">
+          <h4 id="qual-city55">Cityscapes <span>Sample 55</span></h4>
+          <div class="qual-grid">
+            <figure><img src="assets/qual_city55_gt.png" alt="Ground truth for Cityscapes sample 55"><figcaption>Ground truth</figcaption></figure>
+            <figure><img src="assets/qual_city55_camsic.png" alt="CAMSIC reconstruction for Cityscapes sample 55"><figcaption>CAMSIC<span>0.0530 bpp &middot; 29.48 dB<br>LPIPS 0.4720</span></figcaption></figure>
+            <figure><img src="assets/qual_city55_ndsc.png" alt="NDSC reconstruction for Cityscapes sample 55"><figcaption>NDSC<span>0.0625 bpp &middot; 31.29 dB<br>LPIPS 0.3058</span></figcaption></figure>
+            <figure><img src="assets/qual_city55_mdic.png" alt="MDIC reconstruction for Cityscapes sample 55"><figcaption>MDIC<span>0.0490 bpp &middot; 25.44 dB<br>LPIPS 0.1971</span></figcaption></figure>
+            <figure><img src="assets/qual_city55_resulic.png" alt="ResULIC reconstruction for Cityscapes sample 55"><figcaption>ResULIC<span>0.0738 bpp &middot; 26.25 dB<br>LPIPS 0.2358</span></figcaption></figure>
+            <figure class="featured"><img src="assets/qual_city55_radic.png" alt="RADIC reconstruction for Cityscapes sample 55"><figcaption>RADIC<span>0.0478 bpp &middot; 28.27 dB<br>LPIPS 0.1820</span></figcaption></figure>
+          </div>
+        </section>
+
+        <section class="qual-case" aria-labelledby="qual-instereo8">
+          <h4 id="qual-instereo8">InStereo2K <span>Sample 8</span></h4>
+          <div class="qual-grid">
+            <figure><img src="assets/qual_instereo8_gt.png" alt="Ground truth for InStereo2K sample 8"><figcaption>Ground truth</figcaption></figure>
+            <figure><img src="assets/compare_instereo8_camsic.png" alt="CAMSIC reconstruction for InStereo2K sample 8"><figcaption>CAMSIC<span>0.0480 bpp &middot; 28.87 dB<br>LPIPS 0.4272</span></figcaption></figure>
+            <figure><img src="assets/compare_instereo8_ndsc.png" alt="NDSC reconstruction for InStereo2K sample 8"><figcaption>NDSC<span>0.0625 bpp &middot; 29.89 dB<br>LPIPS 0.3548</span></figcaption></figure>
+            <figure><img src="assets/compare_instereo8_mdic.png" alt="MDIC reconstruction for InStereo2K sample 8"><figcaption>MDIC<span>0.0518 bpp &middot; 27.14 dB<br>LPIPS 0.1779</span></figcaption></figure>
+            <figure><img src="assets/compare_instereo8_resulic.png" alt="ResULIC reconstruction for InStereo2K sample 8"><figcaption>ResULIC<span>0.0673 bpp &middot; 27.87 dB<br>LPIPS 0.1987</span></figcaption></figure>
+            <figure class="featured"><img src="assets/compare_instereo8_radic.png" alt="RADIC reconstruction for InStereo2K sample 8"><figcaption>RADIC<span>0.0463 bpp &middot; 30.00 dB<br>LPIPS 0.1533</span></figcaption></figure>
+          </div>
+        </section>
+
+        <section class="qual-case" aria-labelledby="qual-instereo47">
+          <h4 id="qual-instereo47">InStereo2K <span>Sample 47</span></h4>
+          <div class="qual-grid">
+            <figure><img src="assets/qual_gt.png" alt="Ground truth for InStereo2K sample 47"><figcaption>Ground truth</figcaption></figure>
+            <figure><img src="assets/qual_camsic.png" alt="CAMSIC reconstruction for InStereo2K sample 47"><figcaption>CAMSIC<span>0.0680 bpp &middot; 23.22 dB<br>LPIPS 0.5953</span></figcaption></figure>
+            <figure><img src="assets/qual_ndsc.png" alt="NDSC reconstruction for InStereo2K sample 47"><figcaption>NDSC<span>0.0625 bpp &middot; 23.36 dB<br>LPIPS 0.5194</span></figcaption></figure>
+            <figure><img src="assets/qual_mdic.png" alt="MDIC reconstruction for InStereo2K sample 47"><figcaption>MDIC<span>0.0491 bpp &middot; 23.32 dB<br>LPIPS 0.2435</span></figcaption></figure>
+            <figure><img src="assets/qual_resulic.png" alt="ResULIC reconstruction for InStereo2K sample 47"><figcaption>ResULIC<span>0.0806 bpp &middot; 20.87 dB<br>LPIPS 0.2706</span></figcaption></figure>
+            <figure class="featured"><img src="assets/qual_radic.png" alt="RADIC reconstruction for InStereo2K sample 47"><figcaption>RADIC<span>0.0473 bpp &middot; 22.00 dB<br>LPIPS 0.1865</span></figcaption></figure>
+          </div>
+        </section>
       </div>
 
       <h3 class="subheading">How many references?</h3>
