@@ -31,7 +31,7 @@ const comparisonScenes = {
       mdic: ["MDIC", "0.0539", "0.2386"],
       ndsc: ["NDSC", "0.0625", "0.3414"],
       resulic: ["ResULIC", "0.0611", "0.2591"],
-      camsic: ["CAMSIC", "0.0518", "0.4201"]
+      gt: ["Ground truth", null, null, "assets/qual_general3_gt.png"]
     }
   },
   instereo8: {
@@ -40,7 +40,7 @@ const comparisonScenes = {
       mdic: ["MDIC", "0.0518", "0.1779"],
       ndsc: ["NDSC", "0.0625", "0.3548"],
       resulic: ["ResULIC", "0.0673", "0.1987"],
-      camsic: ["CAMSIC", "0.0480", "0.4272"]
+      gt: ["Ground truth", null, null, "assets/qual_instereo8_gt.png"]
     }
   },
   instereo47: {
@@ -49,7 +49,7 @@ const comparisonScenes = {
       mdic: ["MDIC", "0.0491", "0.2435"],
       ndsc: ["NDSC", "0.0625", "0.5194"],
       resulic: ["ResULIC", "0.0806", "0.2706"],
-      camsic: ["CAMSIC", "0.0980", "0.5953"]
+      gt: ["Ground truth", null, null, "assets/qual_gt.png"]
     }
   }
 };
@@ -70,10 +70,10 @@ document.querySelectorAll("[data-comparison-card]").forEach((card) => {
     button.addEventListener("click", () => {
       card.querySelectorAll(".method-button").forEach((item) => item.classList.remove("active"));
       button.classList.add("active");
-      const [method, bpp, lpips] = scene.methods[button.dataset.method];
-      baselineImage.src = `assets/compare_${sceneKey}_${button.dataset.method}.png`;
-      baselineImage.alt = `${method} reconstruction for ${scene.name}`;
-      baselineLabel.innerHTML = `${method}<br><span>${bpp} bpp &middot; LPIPS ${lpips}</span>`;
+      const [method, bpp, lpips, image] = scene.methods[button.dataset.method];
+      baselineImage.src = image || `assets/compare_${sceneKey}_${button.dataset.method}.png`;
+      baselineImage.alt = button.dataset.method === "gt" ? `${method} for ${scene.name}` : `${method} reconstruction for ${scene.name}`;
+      baselineLabel.innerHTML = bpp ? `${method}<br><span>${bpp} bpp &middot; LPIPS ${lpips}</span>` : method;
     });
   });
 });
