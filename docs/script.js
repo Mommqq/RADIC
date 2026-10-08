@@ -24,30 +24,59 @@ document.querySelectorAll(".tab").forEach((button) => {
 
 renderCondition("paired");
 
-const comparisons = {
-  mdic: { image: "assets/qual_mdic.png", label: "MDIC \u00b7 0.0491 bpp \u00b7 LPIPS 0.2435" },
-  ndsc: { image: "assets/qual_ndsc.png", label: "NDSC \u00b7 0.0625 bpp \u00b7 LPIPS 0.5194" },
-  resulic: { image: "assets/qual_resulic.png", label: "ResULIC \u00b7 0.0806 bpp \u00b7 LPIPS 0.2706" },
-  camsic: { image: "assets/qual_camsic.png", label: "CAMSIC \u00b7 0.0980 bpp \u00b7 LPIPS 0.5953" }
+const comparisonScenes = {
+  general3: {
+    name: "KITTI General sample 3",
+    methods: {
+      mdic: ["MDIC", "0.0539", "0.2386"],
+      ndsc: ["NDSC", "0.0625", "0.3414"],
+      resulic: ["ResULIC", "0.0611", "0.2591"],
+      camsic: ["CAMSIC", "0.0518", "0.4201"]
+    }
+  },
+  instereo8: {
+    name: "InStereo2K sample 8",
+    methods: {
+      mdic: ["MDIC", "0.0518", "0.1779"],
+      ndsc: ["NDSC", "0.0625", "0.3548"],
+      resulic: ["ResULIC", "0.0673", "0.1987"],
+      camsic: ["CAMSIC", "0.0480", "0.4272"]
+    }
+  },
+  instereo47: {
+    name: "InStereo2K sample 47",
+    methods: {
+      mdic: ["MDIC", "0.0491", "0.2435"],
+      ndsc: ["NDSC", "0.0625", "0.5194"],
+      resulic: ["ResULIC", "0.0806", "0.2706"],
+      camsic: ["CAMSIC", "0.0980", "0.5953"]
+    }
+  }
 };
 
-function setDivider(value) {
-  document.querySelector("#compare-stage").style.setProperty("--position", `${value}%`);
-}
+document.querySelectorAll("[data-comparison-card]").forEach((card) => {
+  const sceneKey = card.dataset.scene;
+  const scene = comparisonScenes[sceneKey];
+  const stage = card.querySelector(".compare-stage");
+  const range = card.querySelector(".compare-range");
+  const baselineImage = card.querySelector(".compare-baseline-image");
+  const baselineLabel = card.querySelector(".compare-baseline-label");
 
-document.querySelector("#compare-range").addEventListener("input", (event) => setDivider(event.target.value));
-document.querySelectorAll(".method-button").forEach((button) => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".method-button").forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-    const comparison = comparisons[button.dataset.method];
-    document.querySelector("#compare-baseline-image").src = comparison.image;
-    document.querySelector("#compare-baseline-image").alt = `${button.textContent} reconstruction`;
-    document.querySelector("#compare-baseline-label").textContent = comparison.label;
+  range.addEventListener("input", (event) => {
+    stage.style.setProperty("--position", `${event.target.value}%`);
+  });
+
+  card.querySelectorAll(".method-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      card.querySelectorAll(".method-button").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      const [method, bpp, lpips] = scene.methods[button.dataset.method];
+      baselineImage.src = `assets/compare_${sceneKey}_${button.dataset.method}.png`;
+      baselineImage.alt = `${method} reconstruction for ${scene.name}`;
+      baselineLabel.innerHTML = `${method}<br><span>${bpp} bpp &middot; LPIPS ${lpips}</span>`;
+    });
   });
 });
-
-setDivider(50);
 
 document.querySelector("#copy-bib").addEventListener("click", async (event) => {
   await navigator.clipboard.writeText(document.querySelector("#bibtex").innerText);
