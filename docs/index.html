@@ -1,11 +1,11 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="RADIC: Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information.">
   <meta name="theme-color" content="#f6f5f0">
-  <title>RADIC — Retrieval-Augmented Distributed Image Compression</title>
+  <title>RADIC 鈥?Retrieval-Augmented Distributed Image Compression</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
     <main id="top" class="hero-content wrap">
       <p class="eyebrow">Distributed image compression</p>
       <h1>Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information</h1>
-      <p class="authors">Guojun Xu · Jianwen Xiang · Mingyang Zhang · Yaning Xie · Junwei Zhou</p>
+      <p class="authors">Guojun Xu 路 Jianwen Xiang 路 Mingyang Zhang 路 Yaning Xie 路 Junwei Zhou</p>
       <p class="affiliation">School of Artificial Intelligence, Wuhan University of Technology</p>
       <div class="actions">
         <a class="button primary" href="assets/RADIC.pdf">Paper</a>
@@ -93,17 +93,17 @@
           </div>
         </article>
 
-        <article class="comparison-card panel" data-comparison-card data-scene="city32">
-          <h3>Cityscapes <span>Sample 32</span></h3>
+        <article class="comparison-card panel" data-comparison-card data-scene="stereo2">
+          <h3>KITTI Stereo <span>Sample 2</span></h3>
           <div class="compare-stage">
-            <img class="compare-image compare-right" src="assets/qual_city32_radic.png" alt="RADIC reconstruction for Cityscapes sample 32">
-            <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/qual_city32_mdic.png" alt="MDIC reconstruction for Cityscapes sample 32"></div>
-            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0417 bpp &middot; LPIPS 0.2388</span></div>
-            <div class="compare-label right">RADIC<br><span>0.0559 bpp &middot; LPIPS 0.2511</span></div>
+            <img class="compare-image compare-right" src="assets/qual_stereo2_radic.png" alt="RADIC reconstruction for KITTI Stereo sample 2">
+            <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/qual_stereo2_mdic.png" alt="MDIC reconstruction for KITTI Stereo sample 2"></div>
+            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0383 bpp &middot; LPIPS 0.2371</span></div>
+            <div class="compare-label right">RADIC<br><span>0.0496 bpp &middot; LPIPS 0.1955</span></div>
             <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
-            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for Cityscapes sample 32">
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for KITTI Stereo sample 2">
           </div>
-          <div class="method-picker" role="group" aria-label="Baseline method for Cityscapes sample 32">
+          <div class="method-picker" role="group" aria-label="Baseline method for KITTI Stereo sample 2">
             <button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
           </div>
         </article>
@@ -147,117 +147,12 @@
     <div class="wrap">
       <div class="section-heading"><span>06</span><h2>Results</h2></div>
       <div class="result-block">
-        <div class="result-copy"><div><p class="kicker">Perceptual quality</p><h3>Rate–perception performance</h3></div><p>RADIC is evaluated with LPIPS, FID, DISTS, KID, and NIQE across four datasets. Lower values indicate better perceptual reconstruction.</p></div>
+        <div class="result-copy"><div><p class="kicker">Perceptual quality</p><h3>Rate鈥損erception performance</h3></div><p>RADIC is evaluated with LPIPS, FID, DISTS, KID, and NIQE across four datasets. Lower values indicate better perceptual reconstruction.</p></div>
         <figure class="panel result-figure"><img src="assets/rate_perception.svg" alt="Rate-perception curves across four datasets"></figure>
       </div>
       <div class="result-block">
-        <div class="result-copy"><div><p class="kicker">Pixel fidelity</p><h3>Rate–distortion performance</h3></div><p>PSNR and MS-SSIM complement perceptual metrics and expose the distortion–perception behavior at low bitrates.</p></div>
+        <div class="result-copy"><div><p class="kicker">Pixel fidelity</p><h3>Rate鈥揹istortion performance</h3></div><p>PSNR and MS-SSIM complement perceptual metrics and expose the distortion鈥損erception behavior at low bitrates.</p></div>
         <figure class="panel result-figure"><img src="assets/rate_distortion.svg" alt="Rate-distortion curves across four datasets"></figure>
-      </div>
-
-      <h3 class="subheading">Qualitative comparison</h3>
-      <p class="lead qualitative-lead">Four examples from KITTI General, KITTI Stereo, Cityscapes, and InStereo2K. Each caption reports Bpp, PSNR, and LPIPS.</p>
-      <div class="qualitative-list">
-        <section class="qual-case" aria-labelledby="qual-general3">
-          <h4 id="qual-general3">KITTI General <span>Sample 3</span></h4>
-          <div class="qual-grid">
-            <figure><img src="assets/qual_general3_gt.png" alt="Ground truth for KITTI General sample 3"><figcaption>Ground truth</figcaption></figure>
-            <figure><img src="assets/compare_general3_camsic.png" alt="CAMSIC reconstruction for KITTI General sample 3"><figcaption>CAMSIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0518</b></span><span><em>PSNR</em><b>23.49 dB</b></span><span><em>LPIPS</em><b>0.4201</b></span></span></figcaption></figure>
-            <figure><img src="assets/compare_general3_ndsc.png" alt="NDSC reconstruction for KITTI General sample 3"><figcaption>NDSC<span class="qual-metrics"><span><em>Bpp</em><b>0.0625</b></span><span><em>PSNR</em><b>23.66 dB</b></span><span><em>LPIPS</em><b>0.3414</b></span></span></figcaption></figure>
-            <figure><img src="assets/compare_general3_mdic.png" alt="MDIC reconstruction for KITTI General sample 3"><figcaption>MDIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0329</b></span><span><em>PSNR</em><b>20.65 dB</b></span><span><em>LPIPS</em><b>0.2403</b></span></span></figcaption></figure>
-            <figure><img src="assets/compare_general3_resulic.png" alt="ResULIC reconstruction for KITTI General sample 3"><figcaption>ResULIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0732</b></span><span><em>PSNR</em><b>19.74 dB</b></span><span><em>LPIPS</em><b>0.2675</b></span></span></figcaption></figure>
-            <figure class="featured"><img src="assets/compare_general3_radic.png" alt="RADIC reconstruction for KITTI General sample 3"><figcaption>RADIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0484</b></span><span><em>PSNR</em><b>22.36 dB</b></span><span><em>LPIPS</em><b>0.1979</b></span></span></figcaption></figure>
-          </div>
-        </section>
-
-        <section class="qual-case" aria-labelledby="qual-stereo2">
-          <h4 id="qual-stereo2">KITTI Stereo <span>Sample 2</span></h4>
-          <div class="qual-grid">
-            <figure><img src="assets/qual_stereo2_gt.png" alt="Ground truth for KITTI Stereo sample 2"><figcaption>Ground truth</figcaption></figure>
-            <figure><img src="assets/qual_stereo2_camsic.png" alt="CAMSIC reconstruction for KITTI Stereo sample 2"><figcaption>CAMSIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0499</b></span><span><em>PSNR</em><b>25.48 dB</b></span><span><em>LPIPS</em><b>0.4345</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_stereo2_ndsc.png" alt="NDSC reconstruction for KITTI Stereo sample 2"><figcaption>NDSC<span class="qual-metrics"><span><em>Bpp</em><b>0.0625</b></span><span><em>PSNR</em><b>25.89 dB</b></span><span><em>LPIPS</em><b>0.3947</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_stereo2_mdic.png" alt="MDIC reconstruction for KITTI Stereo sample 2"><figcaption>MDIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0383</b></span><span><em>PSNR</em><b>22.74 dB</b></span><span><em>LPIPS</em><b>0.2371</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_stereo2_resulic.png" alt="ResULIC reconstruction for KITTI Stereo sample 2"><figcaption>ResULIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0755</b></span><span><em>PSNR</em><b>21.88 dB</b></span><span><em>LPIPS</em><b>0.2342</b></span></span></figcaption></figure>
-            <figure class="featured"><img src="assets/qual_stereo2_radic.png" alt="RADIC reconstruction for KITTI Stereo sample 2"><figcaption>RADIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0496</b></span><span><em>PSNR</em><b>23.69 dB</b></span><span><em>LPIPS</em><b>0.1955</b></span></span></figcaption></figure>
-          </div>
-        </section>
-
-        <section class="qual-case" aria-labelledby="qual-city32">
-          <h4 id="qual-city32">Cityscapes <span>Sample 32</span></h4>
-          <div class="qual-grid">
-            <figure><img src="assets/qual_city32_gt.png" alt="Ground truth for Cityscapes sample 32"><figcaption>Ground truth</figcaption></figure>
-            <figure><img src="assets/qual_city32_camsic.png" alt="CAMSIC reconstruction for Cityscapes sample 32"><figcaption>CAMSIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0580</b></span><span><em>PSNR</em><b>25.45 dB</b></span><span><em>LPIPS</em><b>0.5453</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city32_ndsc.png" alt="NDSC reconstruction for Cityscapes sample 32"><figcaption>NDSC<span class="qual-metrics"><span><em>Bpp</em><b>0.0625</b></span><span><em>PSNR</em><b>27.70 dB</b></span><span><em>LPIPS</em><b>0.3629</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city32_mdic.png" alt="MDIC reconstruction for Cityscapes sample 32"><figcaption>MDIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0417</b></span><span><em>PSNR</em><b>24.60 dB</b></span><span><em>LPIPS</em><b>0.2388</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city32_resulic.png" alt="ResULIC reconstruction for Cityscapes sample 32"><figcaption>ResULIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0761</b></span><span><em>PSNR</em><b>23.19 dB</b></span><span><em>LPIPS</em><b>0.2785</b></span></span></figcaption></figure>
-            <figure class="featured"><img src="assets/qual_city32_radic.png" alt="RADIC reconstruction for Cityscapes sample 32"><figcaption>RADIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0559</b></span><span><em>PSNR</em><b>24.37 dB</b></span><span><em>LPIPS</em><b>0.2511</b></span></span></figcaption></figure>
-          </div>
-        </section>
-
-        <div class="candidate-heading">
-          <h3 class="subheading">Cityscapes candidate views</h3>
-          <p class="lead qualitative-lead">Four Cityscapes candidates are shown with the same five methods and metric layout for visual selection.</p>
-        </div>
-
-        <section class="qual-case" aria-labelledby="qual-city2">
-          <h4 id="qual-city2">Candidate A <span>Cityscapes sample 2</span></h4>
-          <div class="qual-grid">
-            <figure><img src="assets/qual_city2_gt.png" alt="Ground truth for Cityscapes sample 2"><figcaption>Ground truth</figcaption></figure>
-            <figure><img src="assets/qual_city2_camsic.png" alt="CAMSIC reconstruction for Cityscapes sample 2"><figcaption>CAMSIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0526</b></span><span><em>PSNR</em><b>24.97 dB</b></span><span><em>LPIPS</em><b>0.5334</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city2_ndsc.png" alt="NDSC reconstruction for Cityscapes sample 2"><figcaption>NDSC<span class="qual-metrics"><span><em>Bpp</em><b>0.0625</b></span><span><em>PSNR</em><b>28.83 dB</b></span><span><em>LPIPS</em><b>0.3326</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city2_mdic.png" alt="MDIC reconstruction for Cityscapes sample 2"><figcaption>MDIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0432</b></span><span><em>PSNR</em><b>25.57 dB</b></span><span><em>LPIPS</em><b>0.2270</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city2_resulic.png" alt="ResULIC reconstruction for Cityscapes sample 2"><figcaption>ResULIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0765</b></span><span><em>PSNR</em><b>23.27 dB</b></span><span><em>LPIPS</em><b>0.3065</b></span></span></figcaption></figure>
-            <figure class="featured"><img src="assets/qual_city2_radic.png" alt="RADIC reconstruction for Cityscapes sample 2"><figcaption>RADIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0523</b></span><span><em>PSNR</em><b>25.39 dB</b></span><span><em>LPIPS</em><b>0.2412</b></span></span></figcaption></figure>
-          </div>
-        </section>
-
-        <section class="qual-case" aria-labelledby="qual-city20">
-          <h4 id="qual-city20">Candidate B <span>Cityscapes sample 20</span></h4>
-          <div class="qual-grid">
-            <figure><img src="assets/qual_city20_gt.png" alt="Ground truth for Cityscapes sample 20"><figcaption>Ground truth</figcaption></figure>
-            <figure><img src="assets/qual_city20_camsic.png" alt="CAMSIC reconstruction for Cityscapes sample 20"><figcaption>CAMSIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0240</b></span><span><em>PSNR</em><b>26.99 dB</b></span><span><em>LPIPS</em><b>0.6091</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city20_ndsc.png" alt="NDSC reconstruction for Cityscapes sample 20"><figcaption>NDSC<span class="qual-metrics"><span><em>Bpp</em><b>0.0625</b></span><span><em>PSNR</em><b>30.96 dB</b></span><span><em>LPIPS</em><b>0.3478</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city20_mdic.png" alt="MDIC reconstruction for Cityscapes sample 20"><figcaption>MDIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0381</b></span><span><em>PSNR</em><b>27.04 dB</b></span><span><em>LPIPS</em><b>0.2519</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city20_resulic.png" alt="ResULIC reconstruction for Cityscapes sample 20"><figcaption>ResULIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0714</b></span><span><em>PSNR</em><b>24.41 dB</b></span><span><em>LPIPS</em><b>0.3276</b></span></span></figcaption></figure>
-            <figure class="featured"><img src="assets/qual_city20_radic.png" alt="RADIC reconstruction for Cityscapes sample 20"><figcaption>RADIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0495</b></span><span><em>PSNR</em><b>26.26 dB</b></span><span><em>LPIPS</em><b>0.2632</b></span></span></figcaption></figure>
-          </div>
-        </section>
-
-        <section class="qual-case" aria-labelledby="qual-city32-candidate">
-          <h4 id="qual-city32-candidate">Candidate C <span>Cityscapes sample 32</span></h4>
-          <div class="qual-grid">
-            <figure><img src="assets/qual_city32_gt.png" alt="Ground truth for Cityscapes sample 32"><figcaption>Ground truth</figcaption></figure>
-            <figure><img src="assets/qual_city32_camsic.png" alt="CAMSIC reconstruction for Cityscapes sample 32"><figcaption>CAMSIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0580</b></span><span><em>PSNR</em><b>25.45 dB</b></span><span><em>LPIPS</em><b>0.5453</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city32_ndsc.png" alt="NDSC reconstruction for Cityscapes sample 32"><figcaption>NDSC<span class="qual-metrics"><span><em>Bpp</em><b>0.0625</b></span><span><em>PSNR</em><b>27.70 dB</b></span><span><em>LPIPS</em><b>0.3629</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city32_mdic.png" alt="MDIC reconstruction for Cityscapes sample 32"><figcaption>MDIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0417</b></span><span><em>PSNR</em><b>24.60 dB</b></span><span><em>LPIPS</em><b>0.2388</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city32_resulic.png" alt="ResULIC reconstruction for Cityscapes sample 32"><figcaption>ResULIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0761</b></span><span><em>PSNR</em><b>23.19 dB</b></span><span><em>LPIPS</em><b>0.2785</b></span></span></figcaption></figure>
-            <figure class="featured"><img src="assets/qual_city32_radic.png" alt="RADIC reconstruction for Cityscapes sample 32"><figcaption>RADIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0559</b></span><span><em>PSNR</em><b>24.37 dB</b></span><span><em>LPIPS</em><b>0.2511</b></span></span></figcaption></figure>
-          </div>
-        </section>
-
-        <section class="qual-case" aria-labelledby="qual-city55-candidate">
-          <h4 id="qual-city55-candidate">Candidate D <span>Cityscapes sample 55</span></h4>
-          <div class="qual-grid">
-            <figure><img src="assets/qual_city55_gt.png" alt="Ground truth for Cityscapes sample 55"><figcaption>Ground truth</figcaption></figure>
-            <figure><img src="assets/qual_city55_camsic.png" alt="CAMSIC reconstruction for Cityscapes sample 55"><figcaption>CAMSIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0530</b></span><span><em>PSNR</em><b>29.48 dB</b></span><span><em>LPIPS</em><b>0.4720</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city55_ndsc.png" alt="NDSC reconstruction for Cityscapes sample 55"><figcaption>NDSC<span class="qual-metrics"><span><em>Bpp</em><b>0.0625</b></span><span><em>PSNR</em><b>31.29 dB</b></span><span><em>LPIPS</em><b>0.3058</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city55_mdic.png" alt="MDIC reconstruction for Cityscapes sample 55"><figcaption>MDIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0344</b></span><span><em>PSNR</em><b>27.27 dB</b></span><span><em>LPIPS</em><b>0.1939</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_city55_resulic.png" alt="ResULIC reconstruction for Cityscapes sample 55"><figcaption>ResULIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0738</b></span><span><em>PSNR</em><b>26.25 dB</b></span><span><em>LPIPS</em><b>0.2358</b></span></span></figcaption></figure>
-            <figure class="featured"><img src="assets/qual_city55_radic.png" alt="RADIC reconstruction for Cityscapes sample 55"><figcaption>RADIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0478</b></span><span><em>PSNR</em><b>28.27 dB</b></span><span><em>LPIPS</em><b>0.1820</b></span></span></figcaption></figure>
-          </div>
-        </section>
-
-        <section class="qual-case" aria-labelledby="qual-instereo47">
-          <h4 id="qual-instereo47">InStereo2K <span>Sample 47</span></h4>
-          <div class="qual-grid">
-            <figure><img src="assets/qual_gt.png" alt="Ground truth for InStereo2K sample 47"><figcaption>Ground truth</figcaption></figure>
-            <figure><img src="assets/qual_camsic.png" alt="CAMSIC reconstruction for InStereo2K sample 47"><figcaption>CAMSIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0680</b></span><span><em>PSNR</em><b>23.22 dB</b></span><span><em>LPIPS</em><b>0.5953</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_ndsc.png" alt="NDSC reconstruction for InStereo2K sample 47"><figcaption>NDSC<span class="qual-metrics"><span><em>Bpp</em><b>0.0625</b></span><span><em>PSNR</em><b>23.36 dB</b></span><span><em>LPIPS</em><b>0.5194</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_mdic.png" alt="MDIC reconstruction for InStereo2K sample 47"><figcaption>MDIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0376</b></span><span><em>PSNR</em><b>22.61 dB</b></span><span><em>LPIPS</em><b>0.2129</b></span></span></figcaption></figure>
-            <figure><img src="assets/qual_resulic.png" alt="ResULIC reconstruction for InStereo2K sample 47"><figcaption>ResULIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0806</b></span><span><em>PSNR</em><b>20.87 dB</b></span><span><em>LPIPS</em><b>0.2706</b></span></span></figcaption></figure>
-            <figure class="featured"><img src="assets/qual_radic.png" alt="RADIC reconstruction for InStereo2K sample 47"><figcaption>RADIC<span class="qual-metrics"><span><em>Bpp</em><b>0.0473</b></span><span><em>PSNR</em><b>22.00 dB</b></span><span><em>LPIPS</em><b>0.1865</b></span></span></figcaption></figure>
-          </div>
-        </section>
       </div>
 
       <h3 class="subheading">How many references?</h3>
@@ -281,7 +176,8 @@
     </div>
   </section>
 
-  <footer><div class="wrap"><strong>RADIC</strong><span>Wuhan University of Technology · 2026</span></div></footer>
+  <footer><div class="wrap"><strong>RADIC</strong><span>Wuhan University of Technology 路 2026</span></div></footer>
   <script src="script.js"></script>
 </body>
 </html>
+
