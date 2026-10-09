@@ -1,11 +1,11 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="RADIC: Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information.">
   <meta name="theme-color" content="#f6f5f0">
-  <title>RADIC 鈥?Retrieval-Augmented Distributed Image Compression</title>
+  <title>RADIC - Retrieval-Augmented Distributed Image Compression</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
     <main id="top" class="hero-content wrap">
       <p class="eyebrow">Distributed image compression</p>
       <h1>Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information</h1>
-      <p class="authors">Guojun Xu 路 Jianwen Xiang 路 Mingyang Zhang 路 Yaning Xie 路 Junwei Zhou</p>
+      <p class="authors">Guojun Xu &#124; Jianwen Xiang &#124; Mingyang Zhang &#124; Yaning Xie &#124; Junwei Zhou</p>
       <p class="affiliation">School of Artificial Intelligence, Wuhan University of Technology</p>
       <div class="actions">
         <a class="button primary" href="assets/RADIC.pdf">Paper</a>
@@ -83,8 +83,8 @@
           <div class="compare-stage">
             <img class="compare-image compare-right" src="assets/qual_stereo2_radic.png" alt="RADIC reconstruction for KITTI Stereo sample 2">
             <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/qual_stereo2_mdic.png" alt="MDIC reconstruction for KITTI Stereo sample 2"></div>
-            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0383 bpp &middot; LPIPS 0.2371</span></div>
-            <div class="compare-label right">RADIC<br><span>0.0496 bpp &middot; LPIPS 0.1955</span></div>
+            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0586 bpp | 22.74 dB | LPIPS 0.2371</span></div>
+            <div class="compare-label right">RADIC<br><span>0.0496 bpp | 23.69 dB | LPIPS 0.1955</span></div>
             <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for KITTI Stereo sample 2">
           </div>
@@ -98,8 +98,8 @@
           <div class="compare-stage">
             <img class="compare-image compare-right" src="assets/compare_general3_radic.png" alt="RADIC reconstruction for KITTI General sample 3">
             <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/compare_general3_mdic.png" alt="MDIC reconstruction for KITTI General sample 3"></div>
-            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0329 bpp &middot; LPIPS 0.2403</span></div>
-            <div class="compare-label right">RADIC<br><span>0.0484 bpp &middot; LPIPS 0.1979</span></div>
+            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0506 bpp | 20.65 dB | LPIPS 0.2403</span></div>
+            <div class="compare-label right">RADIC<br><span>0.0484 bpp | 22.36 dB | LPIPS 0.1979</span></div>
             <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for KITTI General sample 3">
           </div>
@@ -113,8 +113,8 @@
           <div class="compare-stage">
             <img class="compare-image compare-right" src="assets/compare_instereo47_radic.png" alt="RADIC reconstruction for InStereo2K sample 47">
             <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/compare_instereo47_mdic.png" alt="MDIC reconstruction for InStereo2K sample 47"></div>
-            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0376 bpp &middot; LPIPS 0.2129</span></div>
-            <div class="compare-label right">RADIC<br><span>0.0533 bpp &middot; LPIPS 0.1865</span></div>
+            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0572 bpp | 22.61 dB | LPIPS 0.2129</span></div>
+            <div class="compare-label right">RADIC<br><span>0.0533 bpp | 22.00 dB | LPIPS 0.1865</span></div>
             <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for InStereo2K sample 47">
           </div>
@@ -147,11 +147,11 @@
     <div class="wrap">
       <div class="section-heading"><span>06</span><h2>Results</h2></div>
       <div class="result-block">
-        <div class="result-copy"><div><p class="kicker">Perceptual quality</p><h3>Rate鈥損erception performance</h3></div><p>RADIC is evaluated with LPIPS, FID, DISTS, KID, and NIQE across four datasets. Lower values indicate better perceptual reconstruction.</p></div>
+        <div class="result-copy"><div><p class="kicker">Perceptual quality</p><h3>Rate-perception performance</h3></div><p>RADIC is evaluated with LPIPS, FID, DISTS, KID, and NIQE across four datasets. Lower values indicate better perceptual reconstruction.</p></div>
         <figure class="panel result-figure"><img src="assets/rate_perception.svg" alt="Rate-perception curves across four datasets"></figure>
       </div>
       <div class="result-block">
-        <div class="result-copy"><div><p class="kicker">Pixel fidelity</p><h3>Rate鈥揹istortion performance</h3></div><p>PSNR and MS-SSIM complement perceptual metrics and expose the distortion鈥損erception behavior at low bitrates.</p></div>
+        <div class="result-copy"><div><p class="kicker">Pixel fidelity</p><h3>Rate-distortion performance</h3></div><p>PSNR and MS-SSIM complement perceptual metrics and expose the distortion-perception behavior at low bitrates.</p></div>
         <figure class="panel result-figure"><img src="assets/rate_distortion.svg" alt="Rate-distortion curves across four datasets"></figure>
       </div>
 
@@ -176,7 +176,7 @@
     </div>
   </section>
 
-  <footer><div class="wrap"><strong>RADIC</strong><span>Wuhan University of Technology 路 2026</span></div></footer>
+  <footer><div class="wrap"><strong>RADIC</strong><span>Wuhan University of Technology &#124; 2026</span></div></footer>
   <script src="script.js"></script>
 </body>
 </html>
