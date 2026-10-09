@@ -28,16 +28,16 @@ const comparisonScenes = {
   general3: {
     name: "KITTI General sample 3",
     methods: {
-      mdic: ["MDIC", "0.0539", "0.2386"],
+      mdic: ["MDIC", "0.0329", "0.2403"],
       ndsc: ["NDSC", "0.0625", "0.3414"],
-      resulic: ["ResULIC", "0.0611", "0.2591"],
+      resulic: ["ResULIC", "0.0732", "0.2675"],
       gt: ["Ground truth", null, null, "assets/qual_general3_gt.png"]
     }
   },
   instereo8: {
     name: "InStereo2K sample 8",
     methods: {
-      mdic: ["MDIC", "0.0518", "0.1779"],
+      mdic: ["MDIC", "0.0363", "0.1511"],
       ndsc: ["NDSC", "0.0625", "0.3548"],
       resulic: ["ResULIC", "0.0673", "0.1987"],
       gt: ["Ground truth", null, null, "assets/qual_instereo8_gt.png"]
@@ -46,7 +46,7 @@ const comparisonScenes = {
   instereo47: {
     name: "InStereo2K sample 47",
     methods: {
-      mdic: ["MDIC", "0.0491", "0.2435"],
+      mdic: ["MDIC", "0.0376", "0.2129"],
       ndsc: ["NDSC", "0.0625", "0.5194"],
       resulic: ["ResULIC", "0.0806", "0.2706"],
       gt: ["Ground truth", null, null, "assets/qual_gt.png"]
