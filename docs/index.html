@@ -78,21 +78,6 @@
       <div class="section-heading"><span>04</span><h2>Visual comparison</h2></div>
       <p class="lead">Reconstruction quality at comparable ultra-low bitrates on the three manuscript examples.</p>
       <div class="comparison-grid">
-        <article class="comparison-card panel" data-comparison-card data-scene="general3">
-          <h3>KITTI General <span>Sample 3</span></h3>
-          <div class="compare-stage">
-            <img class="compare-image compare-right" src="assets/compare_general3_radic.png" alt="RADIC reconstruction for KITTI General sample 3">
-            <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/compare_general3_mdic.png" alt="MDIC reconstruction for KITTI General sample 3"></div>
-            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0329 bpp &middot; LPIPS 0.2403</span></div>
-            <div class="compare-label right">RADIC<br><span>0.0484 bpp &middot; LPIPS 0.1979</span></div>
-            <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
-            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for KITTI General sample 3">
-          </div>
-          <div class="method-picker" role="group" aria-label="Baseline method for KITTI General sample 3">
-            <button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
-          </div>
-        </article>
-
         <article class="comparison-card panel" data-comparison-card data-scene="stereo2">
           <h3>KITTI Stereo <span>Sample 2</span></h3>
           <div class="compare-stage">
@@ -104,6 +89,21 @@
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for KITTI Stereo sample 2">
           </div>
           <div class="method-picker" role="group" aria-label="Baseline method for KITTI Stereo sample 2">
+            <button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
+          </div>
+        </article>
+
+        <article class="comparison-card panel" data-comparison-card data-scene="general3">
+          <h3>KITTI General <span>Sample 3</span></h3>
+          <div class="compare-stage">
+            <img class="compare-image compare-right" src="assets/compare_general3_radic.png" alt="RADIC reconstruction for KITTI General sample 3">
+            <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/compare_general3_mdic.png" alt="MDIC reconstruction for KITTI General sample 3"></div>
+            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0329 bpp &middot; LPIPS 0.2403</span></div>
+            <div class="compare-label right">RADIC<br><span>0.0484 bpp &middot; LPIPS 0.1979</span></div>
+            <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for KITTI General sample 3">
+          </div>
+          <div class="method-picker" role="group" aria-label="Baseline method for KITTI General sample 3">
             <button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
           </div>
         </article>
@@ -180,4 +180,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
