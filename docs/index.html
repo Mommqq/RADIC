@@ -6,7 +6,7 @@
   <meta name="description" content="RADIC: Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information.">
   <meta name="theme-color" content="#f6f5f0">
   <title>RADIC - Retrieval-Augmented Distributed Image Compression</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261009-2">
 </head>
 <body>
   <header class="hero">
@@ -83,10 +83,12 @@
           <div class="compare-stage">
             <img class="compare-image compare-right" src="assets/qual_stereo2_radic.png" alt="RADIC reconstruction for KITTI Stereo sample 2">
             <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/qual_stereo2_mdic.png" alt="MDIC reconstruction for KITTI Stereo sample 2"></div>
-            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0586 bpp | 22.74 dB | LPIPS 0.2371</span></div>
-            <div class="compare-label right">RADIC<br><span>0.0496 bpp | 23.69 dB | LPIPS 0.1955</span></div>
             <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for KITTI Stereo sample 2">
+          </div>
+          <div class="compare-meta">
+            <div class="compare-label left compare-baseline-label"><strong>MDIC</strong><span>0.0586 bpp | 22.74 dB | LPIPS 0.2371</span></div>
+            <div class="compare-label right"><strong>RADIC</strong><span>0.0496 bpp | 23.69 dB | LPIPS 0.1955</span></div>
           </div>
           <div class="method-picker" role="group" aria-label="Baseline method for KITTI Stereo sample 2">
             <button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
@@ -98,10 +100,12 @@
           <div class="compare-stage">
             <img class="compare-image compare-right" src="assets/compare_general3_radic.png" alt="RADIC reconstruction for KITTI General sample 3">
             <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/compare_general3_mdic.png" alt="MDIC reconstruction for KITTI General sample 3"></div>
-            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0506 bpp | 20.65 dB | LPIPS 0.2403</span></div>
-            <div class="compare-label right">RADIC<br><span>0.0484 bpp | 22.36 dB | LPIPS 0.1979</span></div>
             <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for KITTI General sample 3">
+          </div>
+          <div class="compare-meta">
+            <div class="compare-label left compare-baseline-label"><strong>MDIC</strong><span>0.0506 bpp | 20.65 dB | LPIPS 0.2403</span></div>
+            <div class="compare-label right"><strong>RADIC</strong><span>0.0484 bpp | 22.36 dB | LPIPS 0.1979</span></div>
           </div>
           <div class="method-picker" role="group" aria-label="Baseline method for KITTI General sample 3">
             <button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
@@ -113,10 +117,12 @@
           <div class="compare-stage">
             <img class="compare-image compare-right" src="assets/compare_instereo47_radic.png" alt="RADIC reconstruction for InStereo2K sample 47">
             <div class="compare-left"><img class="compare-image compare-baseline-image" src="assets/compare_instereo47_mdic.png" alt="MDIC reconstruction for InStereo2K sample 47"></div>
-            <div class="compare-label left compare-baseline-label">MDIC<br><span>0.0572 bpp | 22.61 dB | LPIPS 0.2129</span></div>
-            <div class="compare-label right">RADIC<br><span>0.0533 bpp | 22.00 dB | LPIPS 0.1865</span></div>
             <div class="compare-divider" aria-hidden="true"><span>&harr;</span></div>
             <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Compare baseline and RADIC for InStereo2K sample 47">
+          </div>
+          <div class="compare-meta">
+            <div class="compare-label left compare-baseline-label"><strong>MDIC</strong><span>0.0572 bpp | 22.61 dB | LPIPS 0.2129</span></div>
+            <div class="compare-label right"><strong>RADIC</strong><span>0.0533 bpp | 22.00 dB | LPIPS 0.1865</span></div>
           </div>
           <div class="method-picker" role="group" aria-label="Baseline method for InStereo2K sample 47">
             <button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
@@ -177,7 +183,7 @@
   </section>
 
   <footer><div class="wrap"><strong>RADIC</strong><span>Wuhan University of Technology &#124; 2026</span></div></footer>
-  <script src="script.js"></script>
+  <script src="script.js?v=20261009-2"></script>
 </body>
 </html>
 

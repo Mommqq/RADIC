@@ -12,3 +12,12 @@
 @media(max-width:900px){.claim-grid,.module-grid{grid-template-columns:repeat(2,1fr)}.comparison-grid{grid-template-columns:1fr;max-width:680px;margin-left:auto;margin-right:auto}.comparison-card{padding:11px}.comparison-card h3{font-size:1.16rem}.compare-label{font-size:.76rem}.compare-label span{font-size:.66rem}.method-button{font-size:.75rem;padding:7px 5px}.analysis-grid{grid-template-columns:1fr}.robustness-grid{grid-template-columns:repeat(3,1fr)}.result-copy{display:block}.result-copy>div{min-width:0}.result-copy p{margin-top:8px}.qual-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.wrap{width:min(100% - 24px,1180px)}.nav-links{display:none}.hero-content{padding-top:44px}.claim-grid,.module-grid{grid-template-columns:1fr}.section{padding:64px 0}.abstract{text-align:left}.robustness-grid{grid-template-columns:repeat(2,1fr)}.robustness-grid .image-card:first-child{grid-column:1/-1}.comparison-card{padding:6px}.compare-label{top:6px;padding:4px 6px;font-size:.65rem}.compare-label span{font-size:.54rem}.compare-label.left{left:6px}.compare-label.right{right:6px}.method-picker{grid-template-columns:repeat(2,1fr)}.qual-grid{grid-template-columns:repeat(2,1fr)}footer .wrap{display:block}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+
+/* Keep comparison metrics outside the images so they never hide visual detail. */
+.compare-meta{display:grid;gap:4px;padding:8px 2px 0}
+.compare-meta .compare-label{position:static;display:flex;align-items:baseline;justify-content:space-between;gap:8px;width:100%;padding:0;background:none;color:var(--ink);border-radius:0;font-size:.72rem;line-height:1.35;backdrop-filter:none;white-space:normal}
+.compare-meta .compare-label strong{flex:0 0 auto;font-weight:800}
+.compare-meta .compare-label span{min-width:0;color:var(--muted);font-size:.62rem;font-weight:600;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.compare-meta .compare-label.left{left:auto}
+.compare-meta .compare-label.right{right:auto;text-align:initial}
+@media(max-width:600px){.compare-meta .compare-label{font-size:.72rem}.compare-meta .compare-label span{font-size:.6rem}}

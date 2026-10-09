@@ -73,7 +73,7 @@ document.querySelectorAll("[data-comparison-card]").forEach((card) => {
       const [method, bpp, psnr, lpips, image] = scene.methods[button.dataset.method];
       baselineImage.src = image || `assets/compare_${sceneKey}_${button.dataset.method}.png`;
       baselineImage.alt = button.dataset.method === "gt" ? `${method} for ${scene.name}` : `${method} reconstruction for ${scene.name}`;
-      baselineLabel.innerHTML = bpp ? `${method}<br><span>${bpp} bpp | ${psnr} dB | LPIPS ${lpips}</span>` : method;
+      baselineLabel.innerHTML = bpp ? `<strong>${method}</strong><span>${bpp} bpp | ${psnr} dB | LPIPS ${lpips}</span>` : `<strong>${method}</strong>`;
     });
   });
 });
