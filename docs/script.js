@@ -34,13 +34,13 @@ const comparisonScenes = {
       gt: ["Ground truth", null, null, "assets/qual_general3_gt.png"]
     }
   },
-  city55: {
-    name: "Cityscapes sample 55",
+  city32: {
+    name: "Cityscapes sample 32",
     methods: {
-      mdic: ["MDIC", "0.0344", "0.1939", "assets/qual_city55_mdic.png"],
-      ndsc: ["NDSC", "0.0625", "0.3058", "assets/qual_city55_ndsc.png"],
-      resulic: ["ResULIC", "0.0738", "0.2358", "assets/qual_city55_resulic.png"],
-      gt: ["Ground truth", null, null, "assets/qual_city55_gt.png"]
+      mdic: ["MDIC", "0.0417", "0.2388", "assets/qual_city32_mdic.png"],
+      ndsc: ["NDSC", "0.0625", "0.3629", "assets/qual_city32_ndsc.png"],
+      resulic: ["ResULIC", "0.0761", "0.2785", "assets/qual_city32_resulic.png"],
+      gt: ["Ground truth", null, null, "assets/qual_city32_gt.png"]
     }
   },
   instereo47: {
