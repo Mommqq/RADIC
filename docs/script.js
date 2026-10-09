@@ -34,13 +34,13 @@ const comparisonScenes = {
       gt: ["Ground truth", null, null, "assets/qual_general3_gt.png"]
     }
   },
-  instereo8: {
-    name: "InStereo2K sample 8",
+  city55: {
+    name: "Cityscapes sample 55",
     methods: {
-      mdic: ["MDIC", "0.0363", "0.1511"],
-      ndsc: ["NDSC", "0.0625", "0.3548"],
-      resulic: ["ResULIC", "0.0673", "0.1987"],
-      gt: ["Ground truth", null, null, "assets/qual_instereo8_gt.png"]
+      mdic: ["MDIC", "0.0344", "0.1939", "assets/qual_city55_mdic.png"],
+      ndsc: ["NDSC", "0.0625", "0.3058", "assets/qual_city55_ndsc.png"],
+      resulic: ["ResULIC", "0.0738", "0.2358", "assets/qual_city55_resulic.png"],
+      gt: ["Ground truth", null, null, "assets/qual_city55_gt.png"]
     }
   },
   instereo47: {
