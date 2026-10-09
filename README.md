@@ -2,7 +2,7 @@
 
 Official research code and project page for **Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information**.
 
-[Project page](https://mommqq.github.io/RADIC/) · [Paper](https://mommqq.github.io/RADIC/assets/RADIC.pdf)
+[Project page](https://mommqq.github.io/RADIC/) | [Paper](https://mommqq.github.io/RADIC/assets/RADIC.pdf)
 
 RADIC retrieves multiple references from a decoder-side visual gallery, aligns them with depth-aware geometry, and selectively aggregates useful content for extremely low-bitrate reconstruction.
 
