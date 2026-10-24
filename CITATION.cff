@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+title: Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information
+message: If you use this code, please cite the RADIC manuscript.
+type: software
+authors:
+  - family-names: Xu
+    given-names: Guojun
+    orcid: https://orcid.org/0009-0003-0165-1809
+  - family-names: Xiang
+    given-names: Jianwen
+    orcid: https://orcid.org/0000-0001-8440-4181
+  - family-names: Zhang
+    given-names: Mingyang
+    orcid: https://orcid.org/0009-0005-7554-965X
+  - family-names: Xie
+    given-names: Yaning
+  - family-names: Zhou
+    given-names: Junwei
+    orcid: https://orcid.org/0000-0002-6094-1203
+year: 2026
+license: BSD-3-Clause

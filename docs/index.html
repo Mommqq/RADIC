@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="RADIC: Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information." name="description"/>
+<meta content="#f6f5f0" name="theme-color"/>
+<title>RADIC - Retrieval-Augmented Distributed Image Compression</title>
+<link href="style.css?v=6d405da6a3b4" rel="stylesheet"/>
+</head>
+<body>
+<header class="hero">
+<nav aria-label="Primary navigation" class="nav wrap">
+<a class="brand" href="#top"><span class="brand-mark">R</span>RADIC</a>
+<div class="nav-links">
+<a href="#overview">Overview</a><a href="#interpretability">Interpretability</a><a href="#results">Results</a><a href="#citation">Citation</a>
+</div>
+</nav>
+<main class="hero-content wrap" id="top">
+<p class="eyebrow">Distributed image compression</p>
+<h1>Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information</h1>
+<p class="authors">Guojun Xu | Jianwen Xiang | Mingyang Zhang | Yaning Xie | Junwei Zhou</p>
+<p class="affiliation">School of Artificial Intelligence, Wuhan University of Technology</p>
+<div class="actions">
+<a class="button" href="assets/RADIC_supplement.pdf?v=6d405da6a3b4" id="supplement-link">Supplement</a><a class="button primary" href="assets/RADIC.pdf?v=6d405da6a3b4">Paper</a>
+<a class="button" href="https://github.com/Mommqq/RADIC">Code</a>
+<a class="button" href="#citation">BibTeX</a>
+</div>
+<figure class="hero-figure panel trim-figure">
+<img alt="Comparison between paired side information and RADIC retrieval from a decoder-side gallery" decoding="async" src="assets/setting.svg?v=6d405da6a3b4"/>
+</figure>
+</main>
+</header>
+<section class="section wrap" id="abstract">
+<div class="section-heading"><span>01</span><h2>Abstract</h2></div>
+<p class="abstract">Extremely low-bitrate distributed image compression (DIC) is crucial for bandwidth-constrained visual sensing and distributed cloud storage. At such low bitrates (&lt;0.1 bpp), the transmitted representation retains little target information, making reconstruction particularly sensitive to the relevance and geometric consistency of the available side information (SI). Existing learning-based DIC methods are commonly developed with a pre-associated SI under matched training and evaluation distributions, whereas practical decoder-side visual collections may contain references with varying correlations to the target. To address these limitations, we propose RADIC, a retrieval-augmented DIC framework that replaces fixed paired SI with multiple references retrieved from a decoder-side visual gallery. Specifically, we construct a heterogeneous SI gallery and retrieve correlated references using the transmitted latent representation. To handle the geometric mismatch and varying relevance of retrieved references, we design a depth-aware geometric alignment module to align retrieved features through depth-guided coarse flow and residual refinement. A multi-reference cross-attention mechanism then selectively aggregates complementary information while suppressing irrelevant content. RADIC is trained using target images from KITTI General and evaluated on KITTI General, KITTI Stereo, Cityscapes, and InStereo2K without further fine-tuning. Experimental results demonstrate superior perceptual compression performance and improved robustness to variations in SI correlation. Our code is released at <a href="https://github.com/Mommqq/RADIC">https://github.com/Mommqq/RADIC</a>.</p>
+</section>
+<section class="section tint" id="overview">
+<div class="wrap">
+<div class="section-heading"><span>02</span><h2>Overall Framework</h2></div>
+<figure class="wide-figure panel trim-figure"><img alt="RADIC framework overview" decoding="async" loading="lazy" src="assets/framework.svg?v=6d405da6a3b4"/></figure>
+<figure class="wide-figure panel compact trim-figure"><img alt="Depth-aware geometric alignment module" decoding="async" loading="lazy" src="assets/daga.svg?v=6d405da6a3b4"/></figure>
+</div>
+</section>
+<section class="section wrap" id="robustness">
+<div class="section-heading"><span>03</span><h2>Robustness to SI Correlation</h2></div>
+<div aria-label="Side information condition" class="tabs" role="tablist">
+<button aria-controls="robustness-panel" aria-selected="true" class="tab active" data-condition="paired" role="tab" tabindex="0">Paired</button>
+<button aria-controls="robustness-panel" aria-selected="false" class="tab" data-condition="non_paired" role="tab" tabindex="-1">Non-paired</button>
+<button aria-controls="robustness-panel" aria-selected="false" class="tab" data-condition="cross_domain" role="tab" tabindex="-1">Cross-domain</button>
+</div>
+<div class="robustness-grid" id="robustness-panel" role="tabpanel">
+<figure class="image-card"><figcaption>Target</figcaption><img alt="Target image" decoding="async" id="target-image" loading="lazy" src="assets/target.png?v=6d405da6a3b4"/></figure>
+<figure class="image-card"><figcaption id="si-label">Paired SI</figcaption><img alt="Side information image" decoding="async" id="si-image" loading="lazy" src="assets/si_paired.png?v=6d405da6a3b4"/></figure>
+<figure class="image-card"><figcaption>ATN <span id="atn-metric">0.0393 bpp | 21.21 dB | LPIPS 0.529</span></figcaption><img alt="ATN reconstruction" decoding="async" id="atn-image" loading="lazy" src="assets/atn_paired.png?v=6d405da6a3b4"/></figure>
+<figure class="image-card"><figcaption>NDSC <span id="ndsc-metric">0.0625 bpp | 24.41 dB | LPIPS 0.354</span></figcaption><img alt="NDSC reconstruction" decoding="async" id="ndsc-image" loading="lazy" src="assets/ndsc_paired.png?v=6d405da6a3b4"/></figure>
+<figure class="image-card"><figcaption>MDIC <span id="mdic-metric">0.0177 bpp | 19.83 dB | LPIPS 0.292</span></figcaption><img alt="MDIC reconstruction" decoding="async" id="mdic-image" loading="lazy" src="assets/mdic_paired.png?v=6d405da6a3b4"/></figure>
+<figure class="image-card featured"><figcaption>RADIC <span id="radic-metric">0.0127 bpp | 22.33 dB | LPIPS 0.211</span></figcaption><img alt="RADIC reconstruction" decoding="async" id="radic-image" loading="lazy" src="assets/radic_paired.png?v=6d405da6a3b4"/></figure>
+</div>
+</section>
+<section class="section comparison-section" id="comparison">
+<div class="wrap">
+<div class="section-heading"><span>04</span><h2>Qualitative Comparison</h2></div>
+<div class="comparison-grid">
+<article class="comparison-card panel" data-comparison-card="" data-scene="stereo2">
+<h3>KITTI Stereo <span>Sample 2</span></h3>
+<div class="compare-stage">
+<img alt="RADIC reconstruction for KITTI Stereo sample 2" class="compare-image compare-right" decoding="async" loading="lazy" src="assets/comparison_stereo2_radic.png?v=6d405da6a3b4"/>
+<div class="compare-left"><img alt="MDIC reconstruction for KITTI Stereo sample 2" class="compare-image compare-baseline-image" decoding="async" loading="lazy" src="assets/comparison_stereo2_mdic.png?v=6d405da6a3b4"/></div>
+<div aria-hidden="true" class="compare-divider"><span>↔</span></div>
+<input aria-label="Compare baseline and RADIC for KITTI Stereo sample 2" class="compare-range" max="100" min="0" type="range" value="50"/>
+</div>
+<div class="compare-meta">
+<div class="compare-label left compare-baseline-label"><strong>MDIC</strong><span class="metric-values"><span>0.0586 bpp</span><span>22.74 dB</span><span>LPIPS 0.2371</span></span></div>
+<div class="compare-label right"><strong>RADIC</strong><span class="metric-values"><span>0.0496 bpp</span><span>23.69 dB</span><span>LPIPS 0.1955</span></span></div>
+</div>
+<div aria-label="Baseline method for KITTI Stereo sample 2" class="method-picker" role="group">
+<button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
+</div>
+</article>
+<article class="comparison-card panel" data-comparison-card="" data-scene="general3">
+<h3>KITTI General <span>Sample 3</span></h3>
+<div class="compare-stage">
+<img alt="RADIC reconstruction for KITTI General sample 3" class="compare-image compare-right" decoding="async" loading="lazy" src="assets/comparison_general3_radic.png?v=6d405da6a3b4"/>
+<div class="compare-left"><img alt="MDIC reconstruction for KITTI General sample 3" class="compare-image compare-baseline-image" decoding="async" loading="lazy" src="assets/comparison_general3_mdic.png?v=6d405da6a3b4"/></div>
+<div aria-hidden="true" class="compare-divider"><span>↔</span></div>
+<input aria-label="Compare baseline and RADIC for KITTI General sample 3" class="compare-range" max="100" min="0" type="range" value="50"/>
+</div>
+<div class="compare-meta">
+<div class="compare-label left compare-baseline-label"><strong>MDIC</strong><span class="metric-values"><span>0.0506 bpp</span><span>20.65 dB</span><span>LPIPS 0.2403</span></span></div>
+<div class="compare-label right"><strong>RADIC</strong><span class="metric-values"><span>0.0484 bpp</span><span>22.36 dB</span><span>LPIPS 0.1979</span></span></div>
+</div>
+<div aria-label="Baseline method for KITTI General sample 3" class="method-picker" role="group">
+<button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
+</div>
+</article>
+<article class="comparison-card panel" data-comparison-card="" data-scene="instereo47">
+<h3>InStereo2K <span>Sample 47</span></h3>
+<div class="compare-stage">
+<img alt="RADIC reconstruction for InStereo2K sample 47" class="compare-image compare-right" decoding="async" loading="lazy" src="assets/comparison_instereo47_radic.png?v=6d405da6a3b4"/>
+<div class="compare-left"><img alt="MDIC reconstruction for InStereo2K sample 47" class="compare-image compare-baseline-image" decoding="async" loading="lazy" src="assets/comparison_instereo47_mdic.png?v=6d405da6a3b4"/></div>
+<div aria-hidden="true" class="compare-divider"><span>↔</span></div>
+<input aria-label="Compare baseline and RADIC for InStereo2K sample 47" class="compare-range" max="100" min="0" type="range" value="50"/>
+</div>
+<div class="compare-meta">
+<div class="compare-label left compare-baseline-label"><strong>MDIC</strong><span class="metric-values"><span>0.0572 bpp</span><span>22.61 dB</span><span>LPIPS 0.2129</span></span></div>
+<div class="compare-label right"><strong>RADIC</strong><span class="metric-values"><span>0.0533 bpp</span><span>22.00 dB</span><span>LPIPS 0.1865</span></span></div>
+</div>
+<div aria-label="Baseline method for InStereo2K sample 47" class="method-picker" role="group">
+<button class="method-button active" data-method="mdic">MDIC</button><button class="method-button" data-method="ndsc">NDSC</button><button class="method-button" data-method="resulic">ResULIC</button><button class="method-button" data-method="gt">GT</button>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section tint" id="interpretability">
+<div class="wrap">
+<div class="section-heading"><span>05</span><h2>Additional Experimental Analysis</h2></div>
+<figure class="wide-figure panel interpretability-figure">
+<img alt="Geometric alignment and SI-aware rate-allocation visualization across four datasets" decoding="async" loading="lazy" src="assets/geometric_alignment_interpretability.svg?v=6d405da6a3b4"/>
+<figcaption>Visualization of geometric alignment and importance modulation across the four test datasets. From left to right, each row shows the target image, retrieved side information (SI), depth prior, learned sampling displacement, alignment gate c_f, and encoder-predicted latent retention response 1-η M_pred. The sampling displacement represents the learned sampling offsets.</figcaption>
+</figure>
+<div id="feature-analysis"><h3 class="subheading">Paired and cross-domain SI</h3><figure class="wide-figure panel interpretability-figure"><img alt="Reference features before and after DAGA and alignment confidence under paired and cross-domain SI" decoding="async" loading="lazy" src="assets/daga_features.svg?v=6d405da6a3b4"/><figcaption>Visualization of DAGA under paired and cross-domain SI (K=1). Each row shows the target image, retrieved SI, channel-averaged absolute reference features before and after DAGA, and the learned confidence map c_f. DAGA preserves informative features from paired SI while suppressing less relevant features under cross-domain SI. Feature responses are visualized using an asinh transformation with independent normalization.</figcaption></figure><details class="supplement-details"><summary>Additional Experimental Analysis</summary><figure class="wide-figure panel interpretability-figure"><img alt="Sample-wise variation of the DAGA affine parameters α and β over the complete test sets" decoding="async" loading="lazy" src="assets/daga_parameters.svg?v=6d405da6a3b4"/><figcaption>Sample-wise variation of the DAGA affine parameters α and β over the complete test sets. α controls the depth-dependent slope of the coarse horizontal displacement, whereas β represents its depth-independent offset. Colored curves show rolling means for the three retrieved references, the red curve denotes their mean, faint points show individual samples, and the gray region indicates the rolling 10–90 percentile range. The horizontal axis represents test samples.</figcaption></figure><figure class="wide-figure panel interpretability-figure"><img alt="Sample-wise effect of SI-aware importance modulation on the estimated coding rate" decoding="async" loading="lazy" src="assets/importance_rate.svg?v=6d405da6a3b4"/><figcaption>Sample-wise effect of SI-aware importance modulation on the estimated coding rate. Thin curves show per-image rates, thick curves show moving averages, and the shaded region denotes the rate reduction. KITTI General, KITTI Stereo, and Cityscapes use 500 targets, while InStereo2K uses all 50 test targets.</figcaption></figure><figure class="wide-figure panel interpretability-figure"><img alt="Internal feature-alignment diagnostics for DAGA" decoding="async" loading="lazy" src="assets/alignment_diagnostics.svg?v=6d405da6a3b4"/><figcaption>Internal feature-alignment diagnostics for DAGA. Left: mean feature L1 residual before and after geometric sampling. Right: relative residual reduction over target-reference pairs. KITTI General, KITTI Stereo, and Cityscapes use 500 targets with three references each; InStereo2K uses all 50 targets. Error bars show standard deviations over target-reference pairs.</figcaption></figure></details></div></div>
+</section>
+<section class="section" id="results">
+<div class="wrap">
+<div class="section-heading"><span>06</span><h2>Main Results</h2></div>
+<div class="result-block">
+<div class="result-copy"><div><h3>Rate-perception comparisons</h3></div><p>Rate-perception comparisons on four test datasets. Lower (↓) is better for all metrics.</p></div>
+<figure class="panel result-figure"><img alt="Rate-perception curves across four datasets" decoding="async" loading="lazy" src="assets/rate_perception.svg?v=6d405da6a3b4"/></figure>
+</div>
+<h3 class="subheading">Effect of the number of SI references</h3>
+<p class="lead narrow">Effect of the number of SI references under paired, non-paired, and cross-domain SI. Each cell reports the rate saving (-BD-Rate, %) relative to K=0 under the same SI setting, while blue and red indicate gains and losses, respectively, and larger values indicate better coding efficiency. Bold outlined cells mark the best K. KG and KS denote KITTI General and KITTI Stereo.</p>
+<figure class="wide-figure panel result-figure"><img alt="Heatmaps of rate saving versus number of side-information references" decoding="async" loading="lazy" src="assets/nref_heatmap.svg?v=6d405da6a3b4"/></figure>
+</div>
+</section>
+<section class="section wrap" id="citation">
+<div class="section-heading"><span>07</span><h2>Citation</h2></div>
+<div class="citation-box">
+<pre id="bibtex">@article{xu2026radic,
+  title = {Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information},
+  author = {Xu, Guojun and Xiang, Jianwen and Zhang, Mingyang and Xie, Yaning and Zhou, Junwei},
+  year = {2026}
+}</pre>
+<button class="copy-button" id="copy-bib">Copy BibTeX</button>
+</div>
+<p class="lead" id="reference-downloads"><a download="" href="assets/RADIC.bib?v=6d405da6a3b4">Download BibTeX</a> · <a download="" href="assets/references.bib?v=6d405da6a3b4">Manuscript references</a></p></section>
+<footer><div class="wrap"><strong>RADIC</strong><span>Wuhan University of Technology | 2026</span></div></footer>
+<script id="paper-data" type="application/json">{"version": "6d405da6a3b4", "title": "Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information", "authors": ["Guojun Xu", "Jianwen Xiang", "Mingyang Zhang", "Yaning Xie", "Junwei Zhou"], "abstract": "Extremely low-bitrate distributed image compression (DIC) is crucial for bandwidth-constrained visual sensing and distributed cloud storage. At such low bitrates (<0.1 bpp), the transmitted representation retains little target information, making reconstruction particularly sensitive to the relevance and geometric consistency of the available side information (SI). Existing learning-based DIC methods are commonly developed with a pre-associated SI under matched training and evaluation distributions, whereas practical decoder-side visual collections may contain references with varying correlations to the target. To address these limitations, we propose RADIC, a retrieval-augmented DIC framework that replaces fixed paired SI with multiple references retrieved from a decoder-side visual gallery. Specifically, we construct a heterogeneous SI gallery and retrieve correlated references using the transmitted latent representation. To handle the geometric mismatch and varying relevance of retrieved references, we design a depth-aware geometric alignment module to align retrieved features through depth-guided coarse flow and residual refinement. A multi-reference cross-attention mechanism then selectively aggregates complementary information while suppressing irrelevant content. RADIC is trained using target images from KITTI General and evaluated on KITTI General, KITTI Stereo, Cityscapes, and InStereo2K without further fine-tuning. Experimental results demonstrate superior perceptual compression performance and improved robustness to variations in SI correlation. Our code is released at https://github.com/Mommqq/RADIC.", "siImages": {"cross_domain": "assets/si_cross_domain.png?v=6d405da6a3b4", "non_paired": "assets/si_non_paired.png?v=6d405da6a3b4", "paired": "assets/si_paired.png?v=6d405da6a3b4"}, "conditions": {"cross_domain": {"atn": {"bpp": "0.0393", "psnr": "20.48", "lpips": "0.576", "image": "assets/atn_cross_domain.png?v=6d405da6a3b4"}, "ndsc": {"bpp": "0.0625", "psnr": "21.19", "lpips": "0.552", "image": "assets/ndsc_cross_domain.png?v=6d405da6a3b4"}, "mdic": {"bpp": "0.0177", "psnr": "11.28", "lpips": "0.635", "image": "assets/mdic_cross_domain.png?v=6d405da6a3b4"}, "radic": {"bpp": "0.0127", "psnr": "21.60", "lpips": "0.247", "image": "assets/radic_cross_domain.png?v=6d405da6a3b4"}}, "non_paired": {"atn": {"bpp": "0.0393", "psnr": "20.41", "lpips": "0.569", "image": "assets/atn_non_paired.png?v=6d405da6a3b4"}, "ndsc": {"bpp": "0.0625", "psnr": "21.47", "lpips": "0.518", "image": "assets/ndsc_non_paired.png?v=6d405da6a3b4"}, "mdic": {"bpp": "0.0177", "psnr": "9.22", "lpips": "0.597", "image": "assets/mdic_non_paired.png?v=6d405da6a3b4"}, "radic": {"bpp": "0.0127", "psnr": "21.69", "lpips": "0.245", "image": "assets/radic_non_paired.png?v=6d405da6a3b4"}}, "paired": {"atn": {"bpp": "0.0393", "psnr": "21.21", "lpips": "0.529", "image": "assets/atn_paired.png?v=6d405da6a3b4"}, "ndsc": {"bpp": "0.0625", "psnr": "24.41", "lpips": "0.354", "image": "assets/ndsc_paired.png?v=6d405da6a3b4"}, "mdic": {"bpp": "0.0177", "psnr": "19.83", "lpips": "0.292", "image": "assets/mdic_paired.png?v=6d405da6a3b4"}, "radic": {"bpp": "0.0127", "psnr": "22.33", "lpips": "0.211", "image": "assets/radic_paired.png?v=6d405da6a3b4"}}}, "scenes": {"stereo2": {"name": "KITTI Stereo sample 2", "methods": {"gt": {"image": "assets/comparison_stereo2_gt.png?v=6d405da6a3b4"}, "ndsc": {"image": "assets/comparison_stereo2_ndsc.png?v=6d405da6a3b4", "bpp": "0.0625", "psnr": "25.89", "lpips": "0.3947"}, "mdic": {"image": "assets/comparison_stereo2_mdic.png?v=6d405da6a3b4", "bpp": "0.0586", "psnr": "22.74", "lpips": "0.2371"}, "resulic": {"image": "assets/comparison_stereo2_resulic.png?v=6d405da6a3b4", "bpp": "0.0755", "psnr": "21.88", "lpips": "0.2342"}, "radic": {"image": "assets/comparison_stereo2_radic.png?v=6d405da6a3b4", "bpp": "0.0496", "psnr": "23.69", "lpips": "0.1955"}}}, "general3": {"name": "KITTI General sample 3", "methods": {"gt": {"image": "assets/comparison_general3_gt.png?v=6d405da6a3b4"}, "ndsc": {"image": "assets/comparison_general3_ndsc.png?v=6d405da6a3b4", "bpp": "0.0625", "psnr": "23.66", "lpips": "0.3414"}, "mdic": {"image": "assets/comparison_general3_mdic.png?v=6d405da6a3b4", "bpp": "0.0506", "psnr": "20.65", "lpips": "0.2403"}, "resulic": {"image": "assets/comparison_general3_resulic.png?v=6d405da6a3b4", "bpp": "0.0732", "psnr": "19.74", "lpips": "0.2675"}, "radic": {"image": "assets/comparison_general3_radic.png?v=6d405da6a3b4", "bpp": "0.0484", "psnr": "22.36", "lpips": "0.1979"}}}, "instereo47": {"name": "InStereo2K sample 47", "methods": {"gt": {"image": "assets/comparison_instereo47_gt.png?v=6d405da6a3b4"}, "ndsc": {"image": "assets/comparison_instereo47_ndsc.png?v=6d405da6a3b4", "bpp": "0.0625", "psnr": "23.36", "lpips": "0.5194"}, "mdic": {"image": "assets/comparison_instereo47_mdic.png?v=6d405da6a3b4", "bpp": "0.0572", "psnr": "22.61", "lpips": "0.2129"}, "resulic": {"image": "assets/comparison_instereo47_resulic.png?v=6d405da6a3b4", "bpp": "0.0806", "psnr": "20.87", "lpips": "0.2706"}, "radic": {"image": "assets/comparison_instereo47_radic.png?v=6d405da6a3b4", "bpp": "0.0533", "psnr": "22.00", "lpips": "0.1865"}}}}}</script><script src="script.js?v=6d405da6a3b4"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+{
+  "version": "6d405da6a3b4",
+  "title": "Retrieval-Augmented Distributed Image Compression with Multi-Reference Side Information",
+  "authors": [
+    "Guojun Xu",
+    "Jianwen Xiang",
+    "Mingyang Zhang",
+    "Yaning Xie",
+    "Junwei Zhou"
+  ],
+  "abstract": "Extremely low-bitrate distributed image compression (DIC) is crucial for bandwidth-constrained visual sensing and distributed cloud storage. At such low bitrates (<0.1 bpp), the transmitted representation retains little target information, making reconstruction particularly sensitive to the relevance and geometric consistency of the available side information (SI). Existing learning-based DIC methods are commonly developed with a pre-associated SI under matched training and evaluation distributions, whereas practical decoder-side visual collections may contain references with varying correlations to the target. To address these limitations, we propose RADIC, a retrieval-augmented DIC framework that replaces fixed paired SI with multiple references retrieved from a decoder-side visual gallery. Specifically, we construct a heterogeneous SI gallery and retrieve correlated references using the transmitted latent representation. To handle the geometric mismatch and varying relevance of retrieved references, we design a depth-aware geometric alignment module to align retrieved features through depth-guided coarse flow and residual refinement. A multi-reference cross-attention mechanism then selectively aggregates complementary information while suppressing irrelevant content. RADIC is trained using target images from KITTI General and evaluated on KITTI General, KITTI Stereo, Cityscapes, and InStereo2K without further fine-tuning. Experimental results demonstrate superior perceptual compression performance and improved robustness to variations in SI correlation. Our code is released at https://github.com/Mommqq/RADIC.",
+  "siImages": {
+    "cross_domain": "assets/si_cross_domain.png?v=6d405da6a3b4",
+    "non_paired": "assets/si_non_paired.png?v=6d405da6a3b4",
+    "paired": "assets/si_paired.png?v=6d405da6a3b4"
+  },
+  "conditions": {
+    "cross_domain": {
+      "atn": {
+        "bpp": "0.0393",
+        "psnr": "20.48",
+        "lpips": "0.576",
+        "image": "assets/atn_cross_domain.png?v=6d405da6a3b4"
+      },
+      "ndsc": {
+        "bpp": "0.0625",
+        "psnr": "21.19",
+        "lpips": "0.552",
+        "image": "assets/ndsc_cross_domain.png?v=6d405da6a3b4"
+      },
+      "mdic": {
+        "bpp": "0.0177",
+        "psnr": "11.28",
+        "lpips": "0.635",
+        "image": "assets/mdic_cross_domain.png?v=6d405da6a3b4"
+      },
+      "radic": {
+        "bpp": "0.0127",
+        "psnr": "21.60",
+        "lpips": "0.247",
+        "image": "assets/radic_cross_domain.png?v=6d405da6a3b4"
+      }
+    },
+    "non_paired": {
+      "atn": {
+        "bpp": "0.0393",
+        "psnr": "20.41",
+        "lpips": "0.569",
+        "image": "assets/atn_non_paired.png?v=6d405da6a3b4"
+      },
+      "ndsc": {
+        "bpp": "0.0625",
+        "psnr": "21.47",
+        "lpips": "0.518",
+        "image": "assets/ndsc_non_paired.png?v=6d405da6a3b4"
+      },
+      "mdic": {
+        "bpp": "0.0177",
+        "psnr": "9.22",
+        "lpips": "0.597",
+        "image": "assets/mdic_non_paired.png?v=6d405da6a3b4"
+      },
+      "radic": {
+        "bpp": "0.0127",
+        "psnr": "21.69",
+        "lpips": "0.245",
+        "image": "assets/radic_non_paired.png?v=6d405da6a3b4"
+      }
+    },
+    "paired": {
+      "atn": {
+        "bpp": "0.0393",
+        "psnr": "21.21",
+        "lpips": "0.529",
+        "image": "assets/atn_paired.png?v=6d405da6a3b4"
+      },
+      "ndsc": {
+        "bpp": "0.0625",
+        "psnr": "24.41",
+        "lpips": "0.354",
+        "image": "assets/ndsc_paired.png?v=6d405da6a3b4"
+      },
+      "mdic": {
+        "bpp": "0.0177",
+        "psnr": "19.83",
+        "lpips": "0.292",
+        "image": "assets/mdic_paired.png?v=6d405da6a3b4"
+      },
+      "radic": {
+        "bpp": "0.0127",
+        "psnr": "22.33",
+        "lpips": "0.211",
+        "image": "assets/radic_paired.png?v=6d405da6a3b4"
+      }
+    }
+  },
+  "scenes": {
+    "stereo2": {
+      "name": "KITTI Stereo sample 2",
+      "methods": {
+        "gt": {
+          "image": "assets/comparison_stereo2_gt.png?v=6d405da6a3b4"
+        },
+        "ndsc": {
+          "image": "assets/comparison_stereo2_ndsc.png?v=6d405da6a3b4",
+          "bpp": "0.0625",
+          "psnr": "25.89",
+          "lpips": "0.3947"
+        },
+        "mdic": {
+          "image": "assets/comparison_stereo2_mdic.png?v=6d405da6a3b4",
+          "bpp": "0.0586",
+          "psnr": "22.74",
+          "lpips": "0.2371"
+        },
+        "resulic": {
+          "image": "assets/comparison_stereo2_resulic.png?v=6d405da6a3b4",
+          "bpp": "0.0755",
+          "psnr": "21.88",
+          "lpips": "0.2342"
+        },
+        "radic": {
+          "image": "assets/comparison_stereo2_radic.png?v=6d405da6a3b4",
+          "bpp": "0.0496",
+          "psnr": "23.69",
+          "lpips": "0.1955"
+        }
+      }
+    },
+    "general3": {
+      "name": "KITTI General sample 3",
+      "methods": {
+        "gt": {
+          "image": "assets/comparison_general3_gt.png?v=6d405da6a3b4"
+        },
+        "ndsc": {
+          "image": "assets/comparison_general3_ndsc.png?v=6d405da6a3b4",
+          "bpp": "0.0625",
+          "psnr": "23.66",
+          "lpips": "0.3414"
+        },
+        "mdic": {
+          "image": "assets/comparison_general3_mdic.png?v=6d405da6a3b4",
+          "bpp": "0.0506",
+          "psnr": "20.65",
+          "lpips": "0.2403"
+        },
+        "resulic": {
+          "image": "assets/comparison_general3_resulic.png?v=6d405da6a3b4",
+          "bpp": "0.0732",
+          "psnr": "19.74",
+          "lpips": "0.2675"
+        },
+        "radic": {
+          "image": "assets/comparison_general3_radic.png?v=6d405da6a3b4",
+          "bpp": "0.0484",
+          "psnr": "22.36",
+          "lpips": "0.1979"
+        }
+      }
+    },
+    "instereo47": {
+      "name": "InStereo2K sample 47",
+      "methods": {
+        "gt": {
+          "image": "assets/comparison_instereo47_gt.png?v=6d405da6a3b4"
+        },
+        "ndsc": {
+          "image": "assets/comparison_instereo47_ndsc.png?v=6d405da6a3b4",
+          "bpp": "0.0625",
+          "psnr": "23.36",
+          "lpips": "0.5194"
+        },
+        "mdic": {
+          "image": "assets/comparison_instereo47_mdic.png?v=6d405da6a3b4",
+          "bpp": "0.0572",
+          "psnr": "22.61",
+          "lpips": "0.2129"
+        },
+        "resulic": {
+          "image": "assets/comparison_instereo47_resulic.png?v=6d405da6a3b4",
+          "bpp": "0.0806",
+          "psnr": "20.87",
+          "lpips": "0.2706"
+        },
+        "radic": {
+          "image": "assets/comparison_instereo47_radic.png?v=6d405da6a3b4",
+          "bpp": "0.0533",
+          "psnr": "22.00",
+          "lpips": "0.1865"
+        }
+      }
+    }
+  }
+}
